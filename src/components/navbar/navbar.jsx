@@ -25,6 +25,7 @@ const Navbar = ({ hidden, toggleNavBarLinks, user }) => {
         <nav className="navbar">
             <Link className="home" to="/">
                 <Logo />
+                <span className="logo-text">Bee Happy</span>                
             </Link>
             <div className="toggle-button" onClick={()=> { 
                 toggleNavBarLinks();
@@ -36,19 +37,19 @@ const Navbar = ({ hidden, toggleNavBarLinks, user }) => {
             { width > 630 || width <= 630 && !hidden ?
                 <ul className="link-container" >
                     <Link className="menu link" to="/menu">
-                        <li>Étlap</li>
+                        <li>VÁSÁRLÁS</li>
                     </Link>
-                    <Link className="gallery link" to="/gallery">
-                        <li>Galéria</li>
+                    <Link className="about link" to="/gallery">
+                        <li>RÓLUNK</li>
                     </Link>
                     <Link className="contact link" to="/contact">
-                        <li>Kapcsolat</li>
+                        <li>KAPCSOLAT</li>
                     </Link>
                     {
                         user ?
-                        <div className='login link' onClick={()=> auth.signOut()}>Kijelentkezés</div>
+                        <div className='login link' onClick={()=> auth.signOut()}>KIJELENTKEZÉS</div>
                         :
-                        <Link className='login link' to='/login'><li>Bejelentkezés</li></Link>
+                        <Link className='login link' to='/login'><li>BEJELENTKEZÉS</li></Link>
                     }
                 </ul>
                 :null

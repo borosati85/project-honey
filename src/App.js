@@ -1,7 +1,7 @@
 import './App.scss';
 import ContactPage from './pages/contact-page/contact-page.component';
-import FoodOrderPage from './pages/food-order-page/food-order-page.component';
-import GalleryPage from './pages/gallery-page/gallery-page.component';
+import ShopPage from './pages/shop-page/shop-page.component';
+import AboutPage from './pages/about-page/about-page.component';
 import LoginPage from './pages/login-page/login-page.component';
 import MainPage from './pages/main-page/main-page.component';
 import Navbar from './components/navbar/navbar'
@@ -57,8 +57,8 @@ class App extends React.Component {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />}/>
-          <Route path="/menu" element={<FoodOrderPage />}/>
-          <Route path="/gallery" element={<GalleryPage />}/>
+          <Route path="/menu" element={<ShopPage />}/>
+          <Route path="/about" element={<AboutPage />}/>
           <Route path="/contact" element={<ContactPage />}/>
           <Route 
             exact path='/login' 

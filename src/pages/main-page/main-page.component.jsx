@@ -17,16 +17,18 @@ const MainPage = () => (
             <span className='sub-title'>A LEGJOBB HELYEN VAGY</span>
             <span className='sub-title'>AHOL A LEGJOBB MÉZET KAPOD</span>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro repudiandae aperiam nihil placeat quod corrupti perferendis rerum quia ipsam alias necessitatibus dolor sapiente, velit magni hic natus. Quae, distinctio!</p>
-            <CustomButton style={{backgroundColor: 'rgb(231, 218, 142)', color: 'black'}}>Tudj meg többet</CustomButton>
+            <CustomButton className='button'>Tudj meg többet</CustomButton>
         </div>
         <div className='img-container'>
             <img src={honeyJar} alt='honey jar' />
         </div>
+        {/*
         <img className='bee bee1' src={bee1} alt='bee'/>
         <img className='bee bee3' src={bee3} alt='bee'/>
         <img className='bee bee4' src={bee4} alt='bee'/>
         <img className='bee bee5' src={bee5} alt='bee'/>
         <img className='flower flower1' src={flower1} alt='flower'/>
+        */}
     </main>
 )
 

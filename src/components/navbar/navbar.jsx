@@ -24,7 +24,7 @@ const Navbar = ({ hidden, toggleNavBarLinks, user }) => {
     return (
         <nav className="navbar">
             <Link className="home" to="/">
-                <Logo />
+                <Logo style={{backgroundColor: 'rgb(231, 218, 142)'}}/>
                 <span className="logo-text">Bee Happy</span>                
             </Link>
             <div className="toggle-button" onClick={()=> { 

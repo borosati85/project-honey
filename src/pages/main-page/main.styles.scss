@@ -12,7 +12,7 @@
 
     .bee {
         width: 20%;
-        min-width: 100px;
+        min-width: 70px;
         height: auto;
         position: absolute;
     }
@@ -28,7 +28,6 @@
     .img-container {
         position: relative;
         width: 50%;
-        min-width: 100px;
     }
 
     .text-container {
@@ -59,14 +58,15 @@
         }
 
         .bee1 {
-            width: 30%;
+            min-width: 100px;
             top: 2%;
             right: 0;
         }
 
         .bee3 {
-            bottom: 15%;
-            right: 5%;
+            min-width: 100px;
+            bottom: 5%;
+            right: 0%;
             width: 25%;
             transform: scaleX(-1);
         }
@@ -126,14 +126,13 @@
     }
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1023px) {
     .main {
         align-items: center;
 
         .text-container,
         .img-container {
-            padding: 20px;
-            width: 80%;
+            width: 100%;
         }
 
         .text-container{
@@ -155,18 +154,11 @@
 
 @media screen and (max-width: 768px) {
     .main {
-        //padding: 0px;
-
-        .text-container,
-        .img-container {            
-            //width: 80%;
-            //padding: 20px;
-        }
-
+  
         .text-container{
 
             .main-title {
-                font-size: 60px;
+                font-size: 55px;
                 margin-bottom: 25px;
             }
         
@@ -184,14 +176,19 @@
 
 @media screen and (max-width: 480px) {
     .main { 
+        .text-container,
+        .img-container {
+            width: 100%;
+        }
+
         .text-container{
 
             .main-title {
-                font-size: 55px;
+                font-size: 32px;
             }
         
             .sub-title {
-                font-size: 18px;
+                font-size: 17px;
             }
         
             p {

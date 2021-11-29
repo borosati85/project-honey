@@ -16,8 +16,8 @@ const MainPage = () => (
             <img className="bee bee1" src={bee1} alt="bee" />
             <img className="bee bee3" src={bee3} alt="bee" />
             <span className="main-title">Bee Happy</span>
-            <span className="sub-title">A LEGJOBB HELYEN VAGY</span>
-            <span className="sub-title">AHOL A LEGJOBB MÉZET KAPOD</span>
+            <span className="sub-title">Open for</span>
+            <span className="sub-title">BUZZZZNESS</span>
             <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro
             repudiandae aperiam nihil placeat quod corrupti perferendis rerum quia

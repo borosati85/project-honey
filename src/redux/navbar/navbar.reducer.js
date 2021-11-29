@@ -1,7 +1,7 @@
 import NavbarActionTypes from "./navbar.types";
 
 const initialState = {
-    hidden: false
+    hidden: true
 }
 
 const navbarReducer = (state=initialState, action) => {

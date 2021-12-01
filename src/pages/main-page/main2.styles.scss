@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Libre+Baskerville:wght@400;700&display=swap');
+
+.main {
+
+  .main__header {
+    padding: 60px 40px;
+    background: url("https://wallpaperaccess.com/full/1585697.jpg") no-repeat right center fixed; ;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.6);
+    background-blend-mode: multiply;
+    height: 100vh;   
+
+    .main__header__title {
+      font-family: 'Architects Daughter', cursive;
+      text-transform: uppercase;
+      letter-spacing: calc(2vw + 20px);
+      font-size: calc(3vw + 25px);
+      color: white;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    
+      
+      .main__header__title__first-letter {
+        color: orange;
+        background-color: black;
+      }
+    }
+  }
+}

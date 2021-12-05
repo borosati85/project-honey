@@ -4,7 +4,7 @@
 
   .main__header {
     padding: 60px 40px;
-    background: url("https://wallpaperaccess.com/full/1585697.jpg") no-repeat right center fixed; ;
+    background: url("https://wallpaperaccess.com/full/1585697.jpg") no-repeat right center;
     background-size: cover;
     background-color: rgba(0,0,0,0.6);
     background-blend-mode: multiply;
@@ -18,8 +18,9 @@
       color: white;
       position: relative;
       top: 50%;
-      transform: translateY(-50%);
-    
+      transform: translateY(-50%);  
+      border: 3px solid white;
+      width: fit-content;  
       
       .main__header__title__first-letter {
         color: orange;

@@ -1,4 +1,6 @@
 import React from "react";
+import AboutPage from "../about-page/about-page.component";
+import ContactPage from "../contact-page/contact-page.component";
 import "./main2.styles.scss";
 
 const MainPage = () => (
@@ -9,6 +11,8 @@ const MainPage = () => (
         <span>oney</span>
       </h1>
     </section>
+    <AboutPage />
+    <ContactPage />
   </main>
 );
 

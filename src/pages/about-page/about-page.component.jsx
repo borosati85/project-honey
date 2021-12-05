@@ -1,10 +1,12 @@
 import React from 'react';
 import './about.styles.scss';
-import honey from '../../assets/honey1.png';
 
 const AboutPage = () => (
-    <section className='about-page'>
-
+    <section className="about">
+      <h1 className="about__title">
+        <span className="about__title__first-letter">R</span>
+        <span>ólunk</span>
+      </h1>
     </section>
 )
 

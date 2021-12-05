@@ -1,47 +1,24 @@
-.about-page {
-    padding: 3% 10%;
+.about {
+  padding: 60px 40px;
+  background-color: beige;
+  height: 100vh;   
 
-    .about-container {
-
-        .about-row {
-            display: flex;
-            flex-wrap: wrap;            
-
-            .about-flex-item {
-                width: 50%;
-            }
-
-
-
-            .text {
-                padding: 20px;
-                background-color: rgb(218, 173, 118);
-
-                .title {
-                    font-size: 18px;
-                    font-weight: 700;
-                }
-            }
-
-            .img-container {
-                background-color: rgb(235, 235, 115);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                .image {
-                    width: 300px;
-                    height: 300px;
-                    border-radius: 100%;
-                }
-            }
-        }
-
-        .about-row2 {
-            flex-direction: row-reverse;
-        }
-
-
+  .about__title {
+    font-family: 'Architects Daughter', cursive;
+    text-transform: uppercase;
+    letter-spacing: calc(2vw + 20px);
+    font-size: calc(3vw + 25px);
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: black;
+  
+    
+    .about__title__first-letter {
+      color: orange;
+      background-color: black;
     }
-
+  }
 }

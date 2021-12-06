@@ -1,24 +1,24 @@
 .contact {
-    padding: 60px 40px;
-    background-color: bisque;
-    height: 100vh;   
+  padding: 60px 40px;
+  background-color: bisque;
+  height: 100vh;   
+
+  .contact__title {
+    font-family: 'Architects Daughter', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2vw;
+    font-size: calc(2vw + 25px);
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: black;
   
-    .contact__title {
-      font-family: 'Architects Daughter', cursive;
-      text-transform: uppercase;
-      letter-spacing: calc(2vw + 20px);
-      font-size: calc(3vw + 25px);
-      color: white;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      width: fit-content;
-      background-color: black;
     
-      
-      .contact__title__first-letter {
-        color: orange;
-        background-color: black;
-      }
+    .contact__title__first-letter {
+      color: orange;
+      background-color: black;
     }
   }
+}

@@ -1,0 +1,24 @@
+.shop {
+    padding: 60px 40px;
+    background-color: rgb(50,50,50);
+    height: 100vh;   
+  
+    .shop__header {
+      font-family: 'Architects Daughter', cursive;
+      text-transform: uppercase;
+      letter-spacing: 2vw;
+      font-size: calc(2vw + 25px);
+      color: white;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: fit-content;
+      background-color: black;
+    
+      
+      .shop-letter {
+        color: orange;
+        background-color: black;
+      }
+    }
+  }

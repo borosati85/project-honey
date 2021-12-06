@@ -57,9 +57,7 @@ class App extends React.Component {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />}/>
-          <Route path="/menu" element={<ShopPage />}/>
-          <Route path="/about" element={<AboutPage />}/>
-          <Route path="/contact" element={<ContactPage />}/>
+          <Route path="/shop" element={<ShopPage />}/>
           <Route 
             exact path='/login' 
             element = {this.props.currentUser ? <Navigate to='/'/> : <LoginPage />} 

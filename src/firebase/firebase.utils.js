@@ -3,13 +3,13 @@ import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDa9Lt7zmUzD_FDoJUDhbkjrJIC_yBttFs",
-  authDomain: "project-pizza-33554.firebaseapp.com",
-  projectId: "project-pizza-33554",
-  storageBucket: "project-pizza-33554.appspot.com",
-  messagingSenderId: "109028364799",
-  appId: "1:109028364799:web:fa6b0a42b58d8278e2d7ca",
-  measurementId: "G-Q16K8PJ891"
+  apiKey: "AIzaSyAunaXNsjdE7vvv__d-heabnO1hMXulQeU",
+  authDomain: "project-honey-95f27.firebaseapp.com",
+  projectId: "project-honey-95f27",
+  storageBucket: "project-honey-95f27.appspot.com",
+  messagingSenderId: "308745804498",
+  appId: "1:308745804498:web:2ff649d23abeeb9e922b0b",
+  measurementId: "${config.measurementId}"
 };
 
 const app = initializeApp(firebaseConfig);

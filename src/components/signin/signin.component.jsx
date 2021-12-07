@@ -27,7 +27,7 @@ class SignIn extends React.Component {
         return (
             <div className='sign-in'>
                 <h2 className='title'>Már van fiókom</h2>
-                <span>Jelentkezzen be az email címével</span>
+                <span>Jelentkezzen be email címe megadásával, vagy Google fiókjával</span>
 
                 <form>
                     <FormInput

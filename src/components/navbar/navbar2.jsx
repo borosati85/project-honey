@@ -47,7 +47,9 @@ const Navbar = () => {
       <HashLink to="/#contact" className="navbar__list-item navbar__contact"> 
         <li>Kapcsolat</li>
       </HashLink> 
-      <li className="navbar__list-item navbar__login">Bejelentkezés</li>
+      <Link className="navbar__list-item navbar__login" to="/login">
+      <li>Bejelentkezés</li>
+      </Link>
     </ul>
     <div className="hamburger-menu">
       <span className="hamburger-menu__bar"></span>

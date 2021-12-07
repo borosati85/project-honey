@@ -12,8 +12,8 @@
         }
     }
 
-
     .product__text {
+        width: 100%;
         padding: 10px;
         background-color: rgb(75, 75, 75);
         .product__title,
@@ -22,7 +22,24 @@
         }
         .product__title {
         }
+
+        .product__button-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+
+            .product__toCart {
+
+            }
+
+            .product__input {
+                width: 50px;
+            }
+        }
     }
+
+
 
 
 }

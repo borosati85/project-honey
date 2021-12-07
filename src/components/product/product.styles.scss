@@ -1,0 +1,29 @@
+.product {
+    border: 5px solid orange;    
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    
+    .product__image-container {
+        height: fit-content;
+
+        .product__image {
+            width: 100%;
+        }
+    }
+
+
+    .product__text {
+        padding: 10px;
+        background-color: rgb(75, 75, 75);
+        .product__title,
+        .product__description {
+            color: rgb(200, 200, 200);
+        }
+        .product__title {
+        }
+    }
+
+
+}
+

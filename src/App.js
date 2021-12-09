@@ -1,7 +1,5 @@
 import './App.scss';
-import ContactPage from './pages/contact-page/contact-page.component';
 import ShopPage from './pages/shop-page/shop-page.component';
-import AboutPage from './pages/about-page/about-page.component';
 import LoginPage from './pages/login-page/login-page.component';
 import MainPage from './pages/main-page/main-page2.component';
 import Navbar from './components/navbar/navbar2'

@@ -3,9 +3,13 @@ import "./navbar2.styles.scss";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import { connect } from "react-redux";
+import { auth } from "../../firebase/firebase.utils";
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 
 
-const Navbar = () => {
+const Navbar = ({ currentUser }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
 
   const handleScroll = (event) => {
@@ -47,9 +51,16 @@ const Navbar = () => {
       <HashLink to="/#contact" className="navbar__list-item navbar__contact"> 
         <li>Kapcsolat</li>
       </HashLink> 
-      <Link className="navbar__list-item navbar__login" to="/login">
-      <li>Bejelentkezés</li>
-      </Link>
+      <CartIcon className="navbar__list-item"/>
+      {
+        currentUser ?
+        <div className="navbar__list-item navbar__logout" onClick={()=> auth.signOut()}>Kijelentkezés</div>
+        :
+        <Link className="navbar__list-item navbar__login" to="/login">
+        <li>Bejelentkezés</li>
+        </Link>
+      }
+
     </ul>
     <div className="hamburger-menu">
       <span className="hamburger-menu__bar"></span>
@@ -60,4 +71,8 @@ const Navbar = () => {
   )
 };
 
-export default Navbar;
+const mapStateToProps = ({user: { currentUser }}) => ({
+  currentUser
+})
+
+export default connect(mapStateToProps)(Navbar);

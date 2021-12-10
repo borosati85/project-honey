@@ -19,4 +19,6 @@ const products = [
     },
 ]
 
-export default products;
+const getProducts = () => [...products];
+
+export default getProducts;

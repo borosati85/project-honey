@@ -3,11 +3,11 @@ const addItemToCart = (cartItems, cartItemToAdd) => {
 
     if (existingCartItem) {
         return cartItems.map(cartItem => {
-            return cartItem.id === cartItemToAdd.id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem
+            return cartItem.id === cartItemToAdd.id ? {...cartItem, quantity: cartItem.quantity + cartItemToAdd.quantity} : cartItem
         })
     }
 
-    return [...cartItems, {...cartItemToAdd, quantity: 1}]
+    return [...cartItems, cartItemToAdd]
 }
 
 const removeItemFromCart = (cartItems, cartItemToRemove) => {

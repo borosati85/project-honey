@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 
 const CartDropDown = ({ cartItems, dispatch}) => {
-    let history = createBrowserHistory();
     return (
         <div className='cart-dropdown'>
             <div className='cart-items'>
@@ -23,7 +22,6 @@ const CartDropDown = ({ cartItems, dispatch}) => {
             </div>
             <Link to='/checkout'>
                 <CustomButton onClick={() => {
-                    history.push('/checkout');
                     dispatch(toggleCartHidden());
                     }}>GO TO CHECKOUT
                 </CustomButton>

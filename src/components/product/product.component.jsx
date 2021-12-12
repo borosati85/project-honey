@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './product.styles.scss';
 import CustomButton from '../custom-button/custom-button.component';
 import { connect } from 'react-redux';
-import { addItem } from '../../redux/cart/cart.actions'
+import { addItem } from '../../redux/cart/cart.actions';
 
 const Product = ({item, addItem}) => {
+    const [quantity, setQuantity] = useState(1);
+
     const { title, description, imageURL } = item;
     return (
         <div className="product">
@@ -15,8 +17,12 @@ const Product = ({item, addItem}) => {
                 <h3 className="product__title">{title}</h3>
                 <p className="product__description">{description}</p>
                 <div className="product__button-container">                
-                    <input className="product__input" type="number" placeholder="1" min="1" max="20"></input>
-                    <CustomButton onClick={() => addItem(item)}>Kosárba</CustomButton>
+                    <input className="product__input" type="number" placeholder="1" min="1" max="99" onChange={(e)=> setQuantity(Number(e.target.value))}></input>
+                    <CustomButton onClick={() => {
+                        addItem({...item, quantity})
+                        }}>
+                        Kosárba
+                    </CustomButton>
                 </div>
 
             </div>

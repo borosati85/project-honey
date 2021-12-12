@@ -7,9 +7,12 @@ import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
+import { createStructuredSelector } from "reselect";
+import selectCurrentUser from '../../redux/user/user.selectors';
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
 
 
-const Navbar = ({ currentUser }) => {
+const Navbar = ({ currentUser, hidden }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
 
   const handleScroll = (event) => {
@@ -50,8 +53,8 @@ const Navbar = ({ currentUser }) => {
 
       <HashLink to="/#contact" className="navbar__list-item navbar__contact"> 
         <li>Kapcsolat</li>
-      </HashLink> 
-      <CartIcon className="navbar__list-item"/>
+      </HashLink>           
+
       {
         currentUser ?
         <div className="navbar__list-item navbar__logout" onClick={()=> auth.signOut()}>Kijelentkezés</div>
@@ -59,6 +62,12 @@ const Navbar = ({ currentUser }) => {
         <Link className="navbar__list-item navbar__login" to="/login">
         <li>Bejelentkezés</li>
         </Link>
+      }
+
+      <CartIcon className="navbar__list-item cart-icon"/>  
+
+      {
+          hidden ? null : <CartDropDown/>
       }
 
     </ul>
@@ -71,8 +80,9 @@ const Navbar = ({ currentUser }) => {
   )
 };
 
-const mapStateToProps = ({user: { currentUser }}) => ({
-  currentUser
-})
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
+});
 
 export default connect(mapStateToProps)(Navbar);

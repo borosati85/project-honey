@@ -2,7 +2,8 @@ import './App.scss';
 import ShopPage from './pages/shop-page/shop-page.component';
 import LoginPage from './pages/login-page/login-page.component';
 import MainPage from './pages/main-page/main-page2.component';
-import Navbar from './components/navbar/navbar2'
+import Navbar from './components/navbar/navbar2';
+import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
 import { auth } from './firebase/firebase.utils';
 import { onAuthStateChanged } from "firebase/auth";
@@ -56,6 +57,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<MainPage />}/>
           <Route path="/shop" element={<ShopPage />}/>
+          <Route path="/checkout" element={<CheckoutPage />}/>
           <Route 
             exact path='/login' 
             element = {this.props.currentUser ? <Navigate to='/'/> : <LoginPage />} 

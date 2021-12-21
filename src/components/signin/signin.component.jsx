@@ -40,7 +40,7 @@ class SignIn extends React.Component {
                     </FormInput>
                     <FormInput 
                         type='password'
-                        name='password'
+                        name='password'                        
                         label='Jelszó'
                         value={this.state.password}
                         onChange={this.handleChange}

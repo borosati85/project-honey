@@ -10,6 +10,7 @@ import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import { createStructuredSelector } from "reselect";
 import selectCurrentUser from '../../redux/user/user.selectors';
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { NavbarContainer, NavbarListContainer, NavbarListItem, HamburgerMenu, HamburgerMenuBar } from './navbar2.styles';
 
 
 const Navbar = ({ currentUser, hidden }) => {
@@ -30,8 +31,8 @@ const Navbar = ({ currentUser, hidden }) => {
   let location = useLocation();
 
   return (
-  <nav className={scrollOffset >= 200 ? 'navbar navbar--shade' : 'navbar'}>
-    <ul className="navbar__list">
+  <NavbarContainer scrollOffset={scrollOffset}>
+    <NavbarListContainer>
 
       {location.pathname === '/' ? 
           <HashLink to="/#main" className="navbar__list-item navbar__brand">
@@ -70,13 +71,13 @@ const Navbar = ({ currentUser, hidden }) => {
           hidden ? null : <CartDropDown/>
       }
 
-    </ul>
+    </NavbarListContainer>
     <div className="hamburger-menu">
       <span className="hamburger-menu__bar"></span>
       <span className="hamburger-menu__bar"></span>
       <span className="hamburger-menu__bar"></span>
     </div>
-  </nav>
+  </NavbarContainer>
   )
 };
 

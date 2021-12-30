@@ -1,13 +1,13 @@
 import React from 'react';
-import './about.styles.scss';
+import { AboutSection, AboutTitle } from './about-page.styles';
 
 const AboutPage = () => (
-    <section className="about" id="about">
-      <h1 className="about__title">
+    <AboutSection id="about">
+      <AboutTitle>
         <span className="about__title__first-letter">R</span>
         <span>ólunk</span>
-      </h1>
-    </section>
+      </AboutTitle>
+    </AboutSection>
 )
 
 export default AboutPage;

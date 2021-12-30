@@ -19,21 +19,6 @@ const selectCartItemsCount = createSelector(
         )    
 )
 
-const selectDeliveryType = createSelector(
-    [selectCart],
-    cart => cart.delivery.type
-)
-
-const selectPaymentType = createSelector(
-    [selectCart],
-    cart => cart.payment.type
-)
-
-const selectDeliveryCost = createSelector(
-    [selectCart],
-    cart => (cart.delivery.price + cart.payment.price) || 0
-)
-
 const selectCartItemsTotal = createSelector(
     [selectCartItems],
     cartItems => cartItems.reduce(
@@ -41,10 +26,4 @@ const selectCartItemsTotal = createSelector(
         ) 
 )
 
-const selectUserInput = createSelector(
-    [selectCart],
-    cart => cart.userInput
-)
-
-
-export { selectCartItems, selectCartItemsCount, selectCartHidden, selectCartItemsTotal, selectDeliveryCost, selectDeliveryType, selectPaymentType, selectUserInput };
+export { selectCart, selectCartItems, selectCartItemsCount, selectCartHidden, selectCartItemsTotal };

@@ -1,13 +1,13 @@
 import React from 'react';
-import './contact.styles.scss';
+import { ContactSection, ContactTitle } from './contact-page.styles';
 
 const ContactPage = () => (
-    <section className="contact" id="contact">
-      <h1 className="contact__title">
+    <ContactSection id="contact">
+      <ContactTitle>
         <span className="contact__title__first-letter">K</span>
         <span>apcsolat</span>
-      </h1>
-    </section>
+      </ContactTitle>
+    </ContactSection>
 )
 
 export default ContactPage;

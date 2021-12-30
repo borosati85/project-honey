@@ -1,12 +1,16 @@
 import React from 'react';
-import './checkout.styles.scss';
+import { CheckoutPageContainer, CheckoutItemsContainer, CheckoutItemsHeaderTextContainer, DeliveryAndPaymentContainer, DeliveryContainer, PaymentContainer, CartTotalContainer, DeliveryFormContainer } from './checkout-page.styles';
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectCartItems, selectCartItemsTotal, selectDeliveryCost, selectDeliveryType, selectPaymentType, selectUserInput } from '../../redux/cart/cart.selectors';
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import FormInput from '../../components/form-input/form-input.component'
-import { setDelivery, setPayment, setUserInput, toggleCartHidden } from '../../redux/cart/cart.actions';
-import { Navigate } from 'react-router-dom';
+import { selectCartItems, selectCartItemsTotal } from '../../redux/cart/cart.selectors';
+import { selectDeliveryCost, selectDeliveryType, selectPaymentType, selectUserInput } from '../../redux/user/user.selectors.js'
+import { setDelivery, setPayment, setUserInput } from '../../redux/user/user.action'
+import CustomButton from '../../components/custom-button/custom-button.component'
+import StripeCheckoutButton from '../../components/stripe-button/StripeButton.component';
+import FormInput from '../../components/form-input/form-input.component';
+
 
 const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, setPayment, deliveryType, paymentType, setUserInput, userInput }) => {
     const handleDeliveryChange = (type, price) => {
@@ -18,32 +22,32 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
         setDelivery({type, price})
     }
     return (
-        <div className='checkout-page'>
-            <div className='checkout-items'>
-                <div className='items-block'>
+        <CheckoutPageContainer>
+            <CheckoutItemsContainer>
+                <CheckoutItemsHeaderTextContainer>
                     <span>Termék</span>
-                </div>
-                <div className='items-block'>
+                </CheckoutItemsHeaderTextContainer>
+                <CheckoutItemsHeaderTextContainer>
                     <span>Név</span>
-                </div>
-                <div className='items-block'>
+                </CheckoutItemsHeaderTextContainer>
+                <CheckoutItemsHeaderTextContainer>
                     <span>Mennyiség</span>
-                </div>
-                <div className='items-block'>
+                </CheckoutItemsHeaderTextContainer>
+                <CheckoutItemsHeaderTextContainer>
                     <span>Ár</span>
-                </div>
-                <div className='items-block'>
+                </CheckoutItemsHeaderTextContainer>
+                <CheckoutItemsHeaderTextContainer>
                     <span>Törlés</span>
-                </div>
-            </div>
+                </CheckoutItemsHeaderTextContainer>
+            </CheckoutItemsContainer>
             {   
                 cartItems.length ?
                 cartItems.map(cartItem => <CheckoutItem key={cartItem.id} item={cartItem}/>)
                 :
                 <Navigate to='/shop'/>
             }
-            <div className='checkout-delivery-and-payment'>
-                <div className='delivery'>
+            <DeliveryAndPaymentContainer>
+                <DeliveryContainer>
                     <p>Átvétel</p>
                     <input type="radio" id="gls" name='delivery' value='gls' checked={deliveryType === 'gls'} onChange={()=> handleDeliveryChange('gls', 1290)}/>
                     <label htmlFor="gls">GLS futárszolgálat (+ 1 290 Ft)</label><br/>
@@ -51,8 +55,8 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
                     <label htmlFor="post">Postapont (+ 990 Ft)</label><br/>
                     <input type="radio" id="in-person" name='delivery' value='in-person' checked={deliveryType === 'in-person'} onChange={()=> handleDeliveryChange('in-person', 0)}/>
                     <label htmlFor="in-person">Személyesen (ingyenes)</label><br/>
-                </div>
-                <div className='payment'>
+                </DeliveryContainer>
+                <PaymentContainer>
                     <p>Fizetés</p>
                     <input type="radio" id="debit-card" name='pay' value='debit-card' checked={paymentType === 'debit-card'} disabled={!deliveryType} onChange={()=> setPayment({type:'debit-card', price:0})}/>
                     <label htmlFor="debit-card">Bankkártya</label><br/>
@@ -60,12 +64,12 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
                     <label htmlFor="on-delivery">Utánvét (+ 390 Ft)</label><br/>
                     <input type="radio" id="cash" name='pay' value='cash' checked={paymentType === 'cash'} disabled={!deliveryType || deliveryType !== 'in-person'} onChange={()=> setPayment({type:'cash', price:0})}/>
                     <label htmlFor="cash">Készpénz</label><br/>
-                </div>
-            </div>
-            <div className='total'>Összesen: {cartItemsTotal + deliveryCost} Ft</div>
+                </PaymentContainer>
+            </DeliveryAndPaymentContainer>
+            <CartTotalContainer>Összesen: {cartItemsTotal + deliveryCost} Ft</CartTotalContainer>
             <div className='details'>
                 <p>Adatok</p>
-                <form className='user-details'>
+                <DeliveryFormContainer>
                     <FormInput
                     type='text'
                     name='name' 
@@ -122,9 +126,16 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
                     onChange={(event)=> setUserInput(event)}
                     required
                     />
-                </form>
+                </DeliveryFormContainer>
             </div>
-        </div>
+
+            {
+                paymentType === 'debit-card' ? <StripeCheckoutButton price={cartItemsTotal + deliveryCost}/> 
+                : <CustomButton>Megrendelés leadása</CustomButton>
+            }
+
+
+        </CheckoutPageContainer>
     )
 }
 

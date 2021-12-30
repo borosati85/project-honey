@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './product.styles.scss';
+import { ProductContainer, ProductImageContainer, ProductImage, ProductTextContainer, ProductTitle, ProductDescription, ProductButtonContainer, ProductInput } from './product.styles'
 import CustomButton from '../custom-button/custom-button.component';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
@@ -9,24 +9,23 @@ const Product = ({item, addItem}) => {
 
     const { title, description, imageURL } = item;
     return (
-        <div className="product">
-            <div className="product__image-container">
-                <img className="product__image" src={imageURL}/>
-            </div>
-            <div className="product__text">
-                <h3 className="product__title">{title}</h3>
-                <p className="product__description">{description}</p>
-                <div className="product__button-container">                
-                    <input className="product__input" type="number" placeholder="1" min="1" max="99" onChange={(e)=> setQuantity(Number(e.target.value))}></input>
+        <ProductContainer>
+            <ProductImageContainer>
+                <ProductImage src={imageURL}/>
+            </ProductImageContainer>
+            <ProductTextContainer>
+                <ProductTitle>{title}</ProductTitle>
+                <ProductDescription>{description}</ProductDescription>
+                <ProductButtonContainer>                
+                    <ProductInput type="number" placeholder="1" min="1" max="99" onChange={(e)=> setQuantity(Number(e.target.value))}/>
                     <CustomButton onClick={() => {
                         addItem({...item, quantity})
                         }}>
                         Kosárba
                     </CustomButton>
-                </div>
-
-            </div>
-        </div>
+                </ProductButtonContainer>
+            </ProductTextContainer>
+        </ProductContainer>
     )
 }
 

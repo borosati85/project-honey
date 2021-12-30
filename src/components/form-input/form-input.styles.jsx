@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 
 const shrink = css`
-    top: -14px;
+    top: 20%;
     font-size: 12px;
     color: black;
 `
 
 const Container = styled.div`
     position: relative;
-    margin: 45px 0;
+    margin: 45px 10px;
 `
 
 const setShrink = ({ focused, valueLength }) => {
@@ -27,10 +27,10 @@ const FormInputContainer = styled.input`
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
-    border: none;
     border-radius: 0;
-    border-bottom: 1px solid grey;
     margin: 25px 0;    
+    border: none;
+    border-bottom: 1px solid grey;
 
     &:focus {
         outline: none;
@@ -38,13 +38,13 @@ const FormInputContainer = styled.input`
 `
 
 const FormInputLabel = styled.label`
-    color: $sub-color;
+    color: grey;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
-    pointer-events: none;
     left: 5px;
-    top: 10px;
+    top: 45%;
+    pointer-events: none;
     transition: 300ms ease all;
     ${setShrink}
 `

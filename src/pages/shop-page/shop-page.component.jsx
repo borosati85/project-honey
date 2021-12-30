@@ -1,20 +1,19 @@
 import React from 'react';
-import './shop.styles.scss';
+import { ShopPageContainer, ShopPageTitle, ShopProductsContainer } from './shop-page.styles';
 import Product from '../../components/product/product.component';
 import getProducts from '../../data/data.js';
 
 const ShopPage = () => {
   const products = getProducts();
   return (
-    <section className="shop" id="shop">
-      <h1 className="shop__header">Shop</h1>
-      <div className="shop__products">
+    <ShopPageContainer id="shop">
+      <ShopPageTitle>Shop</ShopPageTitle>
+      <ShopProductsContainer>
         {
           products.map((item) => <Product key={item.id} item={item}/>)
         }
-      </div>
-    </section>
+      </ShopProductsContainer>
+    </ShopPageContainer>
   )
-
 }
 export default ShopPage;

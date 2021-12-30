@@ -3,7 +3,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import './signup.styles.scss';
+import { SignUpContainer, SignUpTitleContainer } from './signup.styles'
 
 class SignUp extends React.Component {
     constructor() {
@@ -51,11 +51,11 @@ class SignUp extends React.Component {
         const { displayName, email, password, confirmPassword } = this.state;
         return(
                       
-            <div className='sign-up'>
-                <h2 className='title'>Még nincs fiókom</h2>
+            <SignUpContainer>
+                <SignUpTitleContainer>Még nincs fiókom</SignUpTitleContainer>
                 <span>Regisztráljon email címmel</span>
                 
-                <form className='sign-up-form' onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <FormInput
                         type='text'
                         name='displayName'
@@ -90,7 +90,7 @@ class SignUp extends React.Component {
                     />
                     <CustomButton type='submit'>Regisztráció</CustomButton>
                 </form>                    
-            </div>
+            </SignUpContainer>
         )
     }
 }

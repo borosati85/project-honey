@@ -8,7 +8,7 @@ import { auth } from "../../firebase/firebase.utils";
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import { createStructuredSelector } from "reselect";
-import selectCurrentUser from '../../redux/user/user.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { NavbarContainer, NavbarListContainer, NavbarListItem, HamburgerMenu, HamburgerMenuBar } from './navbar2.styles';
 
@@ -35,48 +35,48 @@ const Navbar = ({ currentUser, hidden }) => {
     <NavbarListContainer>
 
       {location.pathname === '/' ? 
-          <HashLink to="/#main" className="navbar__list-item navbar__brand">
+          <NavbarListItem as={HashLink} to="/#main">
             <li>Brand</li>
-          </HashLink>
+          </NavbarListItem>
           :
-          <Link to="/" className="navbar__list-item navbar__brand">
+          <NavbarListItem to="/">
             <li>Brand</li>
-          </Link>    
+          </NavbarListItem>    
       }
 
-      <Link to="/shop" className="navbar__list-item navbar__shop">
+      <NavbarListItem to="/shop">
         <li >Vásárlás</li>
-      </Link>      
+      </NavbarListItem>      
 
-      <HashLink to="/#about" className="navbar__list-item navbar__about">
+      <NavbarListItem as={HashLink} to="/#about">
         <li>Rólunk</li>
-      </HashLink>     
+      </NavbarListItem>     
 
-      <HashLink to="/#contact" className="navbar__list-item navbar__contact"> 
+      <NavbarListItem as={HashLink} to="/#contact"> 
         <li>Kapcsolat</li>
-      </HashLink>           
+      </NavbarListItem>           
 
       {
         currentUser ?
-        <div className="navbar__list-item navbar__logout" onClick={()=> auth.signOut()}>Kijelentkezés</div>
+        <NavbarListItem as='div' onClick={()=> auth.signOut()}>Kijelentkezés</NavbarListItem>
         :
-        <Link className="navbar__list-item navbar__login" to="/login">
+        <NavbarListItem to="/login">
         <li>Bejelentkezés</li>
-        </Link>
+        </NavbarListItem>
       }
 
-      <CartIcon className="navbar__list-item cart-icon"/>  
+      <NavbarListItem as={CartIcon}/>  
 
       {
           hidden ? null : <CartDropDown/>
       }
 
     </NavbarListContainer>
-    <div className="hamburger-menu">
-      <span className="hamburger-menu__bar"></span>
-      <span className="hamburger-menu__bar"></span>
-      <span className="hamburger-menu__bar"></span>
-    </div>
+    <HamburgerMenu>
+      <HamburgerMenuBar/>
+      <HamburgerMenuBar/>
+      <HamburgerMenuBar/>
+    </HamburgerMenu>
   </NavbarContainer>
   )
 };

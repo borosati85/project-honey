@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components";
 
 const defaultButtonStyles = css`
-    background-color: black;    
+    background-color: #DDC9BC;    
+    color: black;
 
     &:hover {
-        background-color: white;
-        color: black;
-        border: 1px solid black;
+        background-color: orange;
     }
 `
 
@@ -19,6 +18,10 @@ const googleButtonStyles = css`
     }
 `
 
+const roundedButtonStyles = css`
+    border-radius: 15px;
+`
+
 const getButtonStyles = (props) => {
     if (props.isGoogleSignin) {
         return googleButtonStyles;
@@ -27,19 +30,26 @@ const getButtonStyles = (props) => {
     }
 }
 
+const getButtonShape = (props) => {
+    if (props.rounded) {
+        return roundedButtonStyles;
+    }
+}
+
 const CustomButtonContainer = styled.button`
     min-width: 165px;
     width: auto;
-    height: 60px;
+    height: 50px;
     letter-spacing: 0.5px;
-    line-height: 20px;
+    line-height: 16px;
     padding: 5px 20px 5px 20px;
     font-size: 14px;
     color: white;
     text-transform: uppercase;
-    font-weight: bolder;
+    font-weight: 600;
     border: none;
     cursor: pointer;
+    ${getButtonShape}
     ${getButtonStyles}
 `
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component';
-import './signin.styles.scss'
 import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { SignInContainer, SignInTitle, ButtonContainer } from './signin.styles';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -25,8 +25,8 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className='sign-in'>
-                <h2 className='title'>Már van fiókom</h2>
+            <SignInContainer>
+                <SignInTitle>Már van fiókom</SignInTitle>
                 <span>Jelentkezzen be email címe megadásával, vagy Google fiókjával</span>
 
                 <form>
@@ -46,12 +46,12 @@ class SignIn extends React.Component {
                         onChange={this.handleChange}
                         required>
                     </FormInput>
-                    <div className='button-container'>
+                    <ButtonContainer>
                         <CustomButton type='submit'>Bejelentkezés</CustomButton>
                         <CustomButton type='button' isGoogleSignin onClick={signInWithGoogle}>Google bejelentkezés</CustomButton>
-                    </div>
+                    </ButtonContainer>
                 </form>
-            </div>
+            </SignInContainer>
         )
     }
 }

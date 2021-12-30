@@ -3,6 +3,7 @@ import ShopPage from './pages/shop-page/shop-page.component';
 import LoginPage from './pages/login-page/login-page.component';
 import MainPage from './pages/main-page/main-page2.component';
 import Navbar from './components/navbar/navbar2';
+import Footer from './components/footer/footer.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
 import { auth } from './firebase/firebase.utils';
@@ -11,7 +12,7 @@ import { onSnapshot } from 'firebase/firestore';
 import { createUserProfileDocument } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
-import setCurrentUser from './redux/user/user.action'
+import { setCurrentUser } from './redux/user/user.action'
 
 import { Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
@@ -63,6 +64,7 @@ class App extends React.Component {
             element = {this.props.currentUser ? <Navigate to='/'/> : <LoginPage />} 
             />
         </Routes>
+        <Footer />
       </div>
     );
   }

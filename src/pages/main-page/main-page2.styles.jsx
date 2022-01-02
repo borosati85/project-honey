@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "./main2.styles.scss";
+import { device } from '../../common/breakpoints';
 
 const MainPageSection = styled.section`
   padding: 60px 40px;
@@ -8,7 +9,7 @@ const MainPageSection = styled.section`
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.6);
   background-blend-mode: multiply;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Montserrat", sans-serif;
   color: #ddc9bc;
   display: flex;
@@ -34,6 +35,7 @@ const MainTitle = styled.h1`
 `;
 
 const MainText = styled.p`
+  max-width: 100%;
   font-family: "Pushster", cursive;
   font-weight: 200;
   font-size: 20px;
@@ -43,10 +45,19 @@ const MainText = styled.p`
 `;
 
 const ButtonContainer = styled.div`
-  margin: 20px 0;
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
+  @media only screen and ${device.xs} {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 20px;    
+  }
+
+  @media only screen and ${device.sm} {
+    flex-direction: row;
+  }
+
 `;
 
 export { MainPageSection, HeroTitle, MainTitle, MainText, ButtonContainer };

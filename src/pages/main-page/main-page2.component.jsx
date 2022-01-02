@@ -1,4 +1,5 @@
 import React from "react";
+import Newsletter from "../../components/newsletter/newsletter.component";
 import AboutPage from "../about-page/about-page.component";
 import ContactPage from "../contact-page/contact-page.component";
 import {
@@ -21,8 +22,8 @@ const MainPage = () => (
       </MainTitle>
       <MainText>
         Akár egy egészséges életmód a célod,
-        <br /> akár csak az ízéért szereted,
-        <br /> fogyaszd bátran mézeinket, nem fogsz csalódni.
+        akár csak az ízéért szereted,
+        fogyaszd bátran mézeinket, nem fogsz csalódni.
       </MainText>
       <ButtonContainer>
         <CustomButton rounded>Tudj meg többet</CustomButton>
@@ -30,6 +31,7 @@ const MainPage = () => (
       </ButtonContainer>
     </MainPageSection>
     <AboutPage />
+    <Newsletter />
     <ContactPage />
   </main>
 );

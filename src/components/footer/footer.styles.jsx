@@ -1,17 +1,25 @@
 import styled from "styled-components";
+import { device } from '../../common/breakpoints';
 
 const FooterContainer = styled.div`
-    display: flex;    
-    flex-wrap: wrap;
-    padding: 20px;
-    background-color: #555;
-    color: #DDC9BC;
-    justify-content: space-around;
+    @media only screen and ${device.xs} {
+        display: flex;  
+        flex-direction: column;
+        justify-content: center;  
+        align-items: center;
+        padding: 20px;
+        background-color: #555;
+        color: #DDC9BC;
+    }
+    @media only screen and ${device.m} {
+        flex-direction: row;
+        justify-content: space-around;
+    }
 `
 
 const FooterColumn = styled.div`
     margin: 15px;
-    max-width: 350px;
+    width: 280px;
 `
 
 const IconContainer = styled.div`

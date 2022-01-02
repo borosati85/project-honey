@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./navbar2.styles.scss";
-import { ReactComponent as Icon } from "../../assets/honeycomb.svg";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
@@ -41,6 +39,7 @@ const Navbar = ({ currentUser, hidden }) => {
   return (
     <NavbarContainer scrollOffset={scrollOffset}>
       <NavbarListContainer>
+
         {location.pathname === "/" ? (
           <NavbarListItem as={HashLink} to="/#main">
             <NavbarIconContainer>
@@ -79,15 +78,14 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem as={CartIcon} />
-
         {hidden ? null : <CartDropDown />}
-      </NavbarListContainer>
-      <HamburgerMenu>
+        <NavbarListItem as={CartIcon} />
+        <HamburgerMenu>
         <HamburgerMenuBar />
         <HamburgerMenuBar />
         <HamburgerMenuBar />
       </HamburgerMenu>
+      </NavbarListContainer>
     </NavbarContainer>
   );
 };

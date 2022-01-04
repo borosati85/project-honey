@@ -23,16 +23,15 @@ const AboutSection = styled.section`
 `;
 
 const AboutTitle = styled.h1`
-  font-family: "Architects Daughter", cursive;
-  text-transform: uppercase;
-  letter-spacing: 2vw;
-  font-size: calc(2vw + 25px);
+  font-family: "Pushster", cursive;
+  font-weight: 400;
+  font-size: calc(2vw + 35px);
+  letter-spacing: 2px;
   color: white;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   width: fit-content;
-  background-color: black;
 `;
 
 const FlexContainer = styled.div`

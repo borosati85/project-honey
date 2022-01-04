@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import background from "../../assets/bg3.jpg";
+import './newsletter.styles.scss';
 
 const NewsletterContainer = styled.div`
     height: 500px;
@@ -17,6 +18,25 @@ const NewsletterContentContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h2 {
+        font-family: "Pushster", cursive;
+        font-weight: 400;
+        font-size: calc(2vw + 35px);
+    }
+
+    h2, p {
+        text-shadow: 2px 2px #000000;
+    }
+
+    input, button {
+        margin: 5px;
+        height: 40px;
+    }
+
+    input {
+        width: 170px;
+    }
 `
 
 export { NewsletterContainer, NewsletterContentContainer };

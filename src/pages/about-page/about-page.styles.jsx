@@ -28,10 +28,6 @@ const AboutTitle = styled.h1`
   font-size: calc(2vw + 35px);
   letter-spacing: 2px;
   color: white;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  width: fit-content;
 `;
 
 const FlexContainer = styled.div`

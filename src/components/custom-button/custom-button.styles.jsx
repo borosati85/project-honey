@@ -1,11 +1,30 @@
 import styled, { css } from "styled-components";
 
 const defaultButtonStyles = css`
+    background-color: black;    
+    color: white;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+`
+
+const primaryButtonStyles = css`
     background-color: #DDC9BC;    
     color: black;
 
     &:hover {
         background-color: orange;
+    }
+`
+
+const secondaryButtonStyles = css`
+    background-color: orange;    
+    color: black;
+
+    &:hover {
+        background-color: #DDC9BC;  
     }
 `
 
@@ -19,14 +38,18 @@ const googleButtonStyles = css`
 `
 
 const roundedButtonStyles = css`
-    border-radius: 15px;
+    border-radius: 30px;
 `
 
 const getButtonStyles = (props) => {
     if (props.isGoogleSignin) {
         return googleButtonStyles;
+    } else if (props.primary) {
+        return primaryButtonStyles;
+    } else if (props.secondary) {
+        return secondaryButtonStyles;
     } else {
-        return defaultButtonStyles
+        return defaultButtonStyles;
     }
 }
 

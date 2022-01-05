@@ -1,5 +1,6 @@
 import React from "react";
 import Newsletter from "../../components/newsletter/newsletter.component";
+import ChooseUs from "../../components/choose-us/choose-us.component";
 import AboutPage from "../about-page/about-page.component";
 import ContactPage from "../contact-page/contact-page.component";
 import {
@@ -26,11 +27,12 @@ const MainPage = () => (
         fogyaszd bátran mézeinket, nem fogsz csalódni.
       </MainText>
       <ButtonContainer>
-        <CustomButton rounded>Tudj meg többet</CustomButton>
-        <CustomButton rounded>Vásárlás</CustomButton>
+        <CustomButton primary rounded>Tudj meg többet</CustomButton>
+        <CustomButton secondary rounded>Vásárlás</CustomButton>
       </ButtonContainer>
     </MainPageSection>
     <AboutPage />
+    <ChooseUs />
     <Newsletter />
     <ContactPage />
   </main>

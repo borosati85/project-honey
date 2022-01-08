@@ -3,6 +3,7 @@ import Newsletter from "../../components/newsletter/newsletter.component";
 import ChooseUs from "../../components/choose-us/choose-us.component";
 import AboutPage from "../about-page/about-page.component";
 import ContactPage from "../contact-page/contact-page.component";
+import Testimonials from "../../components/testimonials/testimonials.component";
 import {
   MainPageSection,
   HeroTitle,
@@ -34,6 +35,7 @@ const MainPage = () => (
     <AboutPage />
     <ChooseUs />
     <Newsletter />
+    <Testimonials />
     <ContactPage />
   </main>
 );

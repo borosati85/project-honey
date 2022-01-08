@@ -6,7 +6,7 @@ const FooterContainer = styled.div`
         display: flex;  
         flex-direction: column;
         justify-content: center;  
-        align-items: center;
+        align-items: flex-start;
         padding: 20px;
         background-color: #555;
         color: #DDC9BC;

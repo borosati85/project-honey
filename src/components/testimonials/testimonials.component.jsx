@@ -7,15 +7,30 @@ import getTestimonials from '../../data/testimonials';
 
 const Testimonials = () => {
     const testimonials = getTestimonials();
-    const itemsToDisplay = {
-        280: 1,
-        768: 2,
-        1200: 3
-    }
     const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+    const [startIndex, setStartIndex] = useState(0);
+    const [endIndex, setEndIndex] = useState(
+        innerWidth >= 1200 ? 2
+        : innerWidth >= 768 ? 1
+        : 0
+    )
     const handleResize = event => {
         setInnerWidth((prevState) => window.innerWidth);
+        const index =
+        window.innerWidth >= 1200 ? 2
+        : window.innerWidth >= 768 ? 1
+        : 0
+        setEndIndex(index)
     }
+
+    const selectNext = () => {
+        
+    }
+
+    const selectPrevious = () => {
+
+    }
+
     useEffect(() => {
         window.addEventListener("resize", handleResize);
     
@@ -26,11 +41,11 @@ const Testimonials = () => {
 
     return (
         <TestimonialsContainer>
-            <TestimonalsTitle>Rólunk mondták {innerWidth}</TestimonalsTitle>            
+            <TestimonalsTitle>Rólunk mondták {innerWidth} - {endIndex}</TestimonalsTitle>            
             <CardContainer>
                 <Arrow>&#10094;</Arrow>
                 {
-                    testimonials.filter((testimonial, idx) => innerWidth > 1200 ? idx < 3 : innerWidth > 768 ? idx < 2 : idx < 1)
+                    testimonials.filter((testimonial, idx) => idx >= startIndex && idx <= endIndex)
                     .map(({ id, ...otherProps }) => <TestimonialCard key={id} {...otherProps} />)
                 }
                 <Arrow>&#10095;</Arrow>

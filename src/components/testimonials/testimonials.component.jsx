@@ -7,28 +7,39 @@ import getTestimonials from '../../data/testimonials';
 
 const Testimonials = () => {
     const testimonials = getTestimonials();
-    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-    const [startIndex, setStartIndex] = useState(0);
-    const [endIndex, setEndIndex] = useState(
-        innerWidth >= 1200 ? 2
-        : innerWidth >= 768 ? 1
-        : 0
-    )
+    const getIndex = width => width >= 1200 ? 3 : width >= 768 ? 2 : 1
+    const startIndex = 0;
+    const endIndex = getIndex(window.innerWidth);
+    const [displayedCards, setDisplayedCards] = useState(testimonials.slice(startIndex,endIndex));
+
     const handleResize = event => {
-        setInnerWidth((prevState) => window.innerWidth);
-        const index =
-        window.innerWidth >= 1200 ? 2
-        : window.innerWidth >= 768 ? 1
-        : 0
-        setEndIndex(index)
+        const index = getIndex(window.innerWidth);
+        const cards = testimonials.slice(0,index);
+        setDisplayedCards(cards);
     }
 
     const selectNext = () => {
-        
+        setDisplayedCards(prevState => {
+            const lastItemIndex = prevState[prevState.length-1].id;
+            const newItemIndex = lastItemIndex + 1 > 4 ? 0 : lastItemIndex + 1;
+            const newtItem = testimonials[newItemIndex];
+            const newState = [...prevState];
+            newState.shift();
+            newState.push(newtItem);
+            return newState;
+        })
     }
 
     const selectPrevious = () => {
-
+        setDisplayedCards(prevState => {     
+            const firstItemIndex = prevState[0].id;
+            const newItemIndex = firstItemIndex - 1 < 0 ? 4 : firstItemIndex - 1;
+            const newItem = testimonials[newItemIndex];
+            const newState = [...prevState];            
+            newState.pop();
+            newState.unshift(newItem);
+            return newState;
+        })
     }
 
     useEffect(() => {
@@ -41,14 +52,13 @@ const Testimonials = () => {
 
     return (
         <TestimonialsContainer>
-            <TestimonalsTitle>Rólunk mondták {innerWidth} - {endIndex}</TestimonalsTitle>            
+            <TestimonalsTitle>Rólunk mondták</TestimonalsTitle>            
             <CardContainer>
-                <Arrow>&#10094;</Arrow>
+                <Arrow onClick={selectPrevious}>&#10094;</Arrow>
                 {
-                    testimonials.filter((testimonial, idx) => idx >= startIndex && idx <= endIndex)
-                    .map(({ id, ...otherProps }) => <TestimonialCard key={id} {...otherProps} />)
+                    displayedCards.map(({ id, ...otherProps }) => <TestimonialCard key={id} {...otherProps} />)
                 }
-                <Arrow>&#10095;</Arrow>
+                <Arrow onClick={selectNext}>&#10095;</Arrow>
             </CardContainer>
             
         </TestimonialsContainer>

@@ -34,17 +34,20 @@ const ContentContainer = styled.div`
 `;
 
 const ClientImage = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 120px;
+  //border-radius: 50%;
 `;
 
 const NameContainer = styled.h3`
-  border-bottom: 5px solid orange;
   padding-bottom: 10px;
 `;
 
-const QuoteContainer = styled.p``;
+const QuoteContainer = styled.p`
+  text-align: center;
+  width: 100%;
+  height: 120px;
+`;
 
 export {
   TestimonialCardContainer,

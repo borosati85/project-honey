@@ -12,9 +12,9 @@ const TestimonialCard = ({ name, imageUrl, quote }) => (
   <TestimonialCardContainer>
     <Quotemark>"</Quotemark>
     <ContentContainer>
+      <QuoteContainer>{quote} </QuoteContainer>
       <ClientImage src={imageUrl} />
       <NameContainer>{name}</NameContainer>
-      <QuoteContainer>{quote} </QuoteContainer>
     </ContentContainer>
   </TestimonialCardContainer>
 );

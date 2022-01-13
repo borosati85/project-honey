@@ -2,9 +2,9 @@ import styled from "styled-components";
 import "./testimonial-card.styles.scss";
 
 const TestimonialCardContainer = styled.div`
-  height: 400px;
-  width: 250px;
-  background-color: rgba(0, 0, 0, 0.1);
+  height: 450px;
+  width: 300px;
+  background-color: white;
   position: relative;
   border-radius: 10px;
   box-shadow: 10px 10px 20px black;
@@ -35,8 +35,8 @@ const ContentContainer = styled.div`
 
 const ClientImage = styled.img`
   width: 150px;
-  height: 120px;
-  //border-radius: 50%;
+  height: 150px;
+  border-radius: 50%;
 `;
 
 const NameContainer = styled.h3`

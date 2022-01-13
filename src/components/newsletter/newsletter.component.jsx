@@ -1,14 +1,14 @@
 import React from 'react';
-import { NewsletterContainer, NewsletterContentContainer, NewsletterTitle, NewsletterText, NewsletterInput, NewsletterSignup } from './newsletter.styles';
+import { NewsletterContainer, NewsletterContentContainer, NewsletterTitle, NewsletterText, NewsletterInput, NewsletterInputContainer } from './newsletter.styles';
 import CustomButton from '../custom-button/custom-button.component';
 const Newsletter = () => (
     <NewsletterContainer>
         <NewsletterContentContainer>
             <NewsletterTitle>Hírlevél feliratkozás</NewsletterTitle>
             <NewsletterText>Iratkozz fel hírlevelünkre, hogy értesülj legfrissebb termékeinkről, akcióinkról.</NewsletterText>
-            <div>
+            <NewsletterInputContainer>
                 <NewsletterInput type='text' placeholder='Email cím'></NewsletterInput><CustomButton>Feliratkozás</CustomButton>
-            </div>
+            </NewsletterInputContainer>
         </NewsletterContentContainer>
     </NewsletterContainer>
 )

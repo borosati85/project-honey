@@ -5,14 +5,13 @@ import {
   ContactFormBackground,
   ContactForm
 } from "./contact-page.styles";
-import pic from "../../assets/blank-profile.png";
+import pic from "../../assets/profilepic4.png";
 import CustomButton from "../../components/custom-button/custom-button.component";
 
 const ContactPage = () => (
   <ContactSection id="contact">
     <ContactTitle>
-      <span className="contact__title__first-letter">K</span>
-      <span>apcsolat</span>
+      Kapcsolat
     </ContactTitle>
     <ContactFormBackground>
       <img src={pic} />

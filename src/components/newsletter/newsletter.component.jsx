@@ -9,13 +9,18 @@ const Newsletter = () => {
     }
 
     const validateEmail = (email) => {
-
+        const pattern = /^[\w\d]{3,}@[\w]{3,}\.[\w]{2,3}$/i
+        return pattern.test(email);
     }
 
     const handleSubmit = () => {
         const email = userEmail;
-        validateEmail(email) ? alert('Köszönjük a feliratkozást') : (alert('Az email cím nem megfelelő'))
-        setUserEmail('');
+        if (validateEmail(email)) {
+            alert('Köszönjük a feliratkozást');
+            setUserEmail('');
+        } else {
+            (alert('Az email cím nem megfelelő'))
+        }
     }
 
     return (

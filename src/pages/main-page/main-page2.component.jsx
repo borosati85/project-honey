@@ -11,6 +11,8 @@ import {
   MainText,
   ButtonContainer
 } from "./main-page2.styles";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button.component";
 
 const MainPage = () => (
@@ -23,13 +25,20 @@ const MainPage = () => (
         <span style={{ color: "#FCA103" }}>méz</span> közvetlen a termelőtől
       </MainTitle>
       <MainText>
-        Akár egy egészséges életmód a célod,
-        akár csak az ízéért szereted,
+        Akár egy egészséges életmód a célod, akár csak az ízéért szereted,
         fogyaszd bátran mézeinket, nem fogsz csalódni.
       </MainText>
       <ButtonContainer>
-        <CustomButton primary rounded>Tudj meg többet</CustomButton>
-        <CustomButton secondary rounded>Vásárlás</CustomButton>
+        <HashLink to="#about">
+          <CustomButton primary rounded>
+            Tudj meg többet
+          </CustomButton>
+        </HashLink>
+        <Link to="/shop">
+          <CustomButton secondary rounded>
+            Vásárlás
+          </CustomButton>
+        </Link>
       </ButtonContainer>
     </MainPageSection>
     <AboutPage />

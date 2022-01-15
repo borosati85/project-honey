@@ -21,35 +21,42 @@ import {
 
 const Navbar = ({ currentUser, hidden }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [width, setInnerWIdth] = useState(window.innerWidth);
   const [visibility, setVisibility] = useState(false);
 
   const handleScroll = (event) => {
     setScrollOffset((prevState) => window.pageYOffset);
   };
 
+  const handleResize = (event) => {
+    setInnerWIdth((prevState) => window.innerWIdth);
+  }
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   let location = useLocation();
 
   return (
-    <NavbarContainer scrollOffset={scrollOffset}>
+    <NavbarContainer visibility={visibility} scrollOffset={scrollOffset} width={width}>
       <NavbarListContainer>
 
         {location.pathname === "/" ? (
-          <NavbarListItem as={HashLink} to="/#main">
+          <NavbarListItem gridArea="logo" as={HashLink} to="/#main">
             <NavbarIconContainer>
               <NavbarIcon />
               BM
             </NavbarIconContainer>
           </NavbarListItem>
         ) : (
-          <NavbarListItem to="/">
+          <NavbarListItem gridArea="logo" to="/">
             <NavbarIconContainer>
               <NavbarIcon />
               BM
@@ -57,31 +64,33 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem visibility={visibility} to="/shop">
+        <NavbarListItem gridArea="shop" visibility={visibility} to="/shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 
-        <NavbarListItem visibility={visibility} as={HashLink} to="/#about">
+        <NavbarListItem gridArea="about" visibility={visibility} as={HashLink} to="/#about">
           <li>Rólunk</li>
         </NavbarListItem>
 
-        <NavbarListItem visibility={visibility} as={HashLink} to="/#contact">
+        <NavbarListItem gridArea="contact" visibility={visibility} as={HashLink} to="/#contact">
           <li>Kapcsolat</li>
         </NavbarListItem>
 
         {currentUser ? (
-          <NavbarListItem visibility={visibility} as="div" onClick={() => auth.signOut()}>
+          <NavbarListItem gridArea="login" visibility={visibility} as="div" onClick={() => auth.signOut()}>
             Kijelentkezés
           </NavbarListItem>
         ) : (
-          <NavbarListItem visibility={visibility} to="/login">
+          <NavbarListItem gridArea="login" visibility={visibility} to="/login">
             <li>Bejelentkezés</li>
           </NavbarListItem>
         )}
 
         {hidden ? null : <CartDropDown />}
-        <NavbarListItem as={CartIcon} />
-        <HamburgerMenu onClick={()=> setVisibility(!visibility)}>
+        <NavbarListItem gridArea="cart" as='div'>
+          <CartIcon />
+        </NavbarListItem>        
+        <HamburgerMenu gridArea="hamburger" onClick={()=> setVisibility(!visibility)}>
         <HamburgerMenuBar />
         <HamburgerMenuBar />
         <HamburgerMenuBar />

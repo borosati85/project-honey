@@ -8,13 +8,14 @@ const CartIconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: pointer;    
+    color: black; !important;
     filter: invert(100%) sepia(0%) saturate(2675%) hue-rotate(336deg) brightness(90%) contrast(70%);
 `
 
 const ShoppingIcon = styled(Icon)`
     width: 24px;
-    height: 24px;
+    height: 24px;    
 `
 
 const ItemCountContainner = styled.span`

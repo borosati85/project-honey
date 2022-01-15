@@ -4,33 +4,60 @@ import "./navbar2.styles.scss";
 import { Link } from "react-router-dom";
 import { ReactComponent as Icon } from "../../assets/honeycomb.svg";
 
-const NavbarShade = css`
+const NavbarShadeOn = css`
   background-color: #8e7c68;
   box-shadow: 0px 6px 10px black;
   z-index: 10;
 `;
 
+const NavbarShadeOff = css`
+  background-color: transparent;
+`
+
 const NavbarVisible = css`
-  display: block;
+  display: flex;
 `
 
 const NavbarHidden = css`
   display: none;
 `
 
+const NavbarExpanded = css`
+  height: 450px;
+  background-color: #8e7c68;
+`
+
+const NavbarCollapsed = css`
+  height: 95px;
+`
+
 const setNavbarShade = (props) => {
-  if (props.scrollOffset >= 200) {
-    return NavbarShade;
+  if (props.scrollOffset >= 200 || !props.visibility ) {
+    return NavbarShadeOn;
   } else {
-    return null;
+    return NavbarShadeOff;
   }
 };
 
-const setVisibility = (props) => {
+const getGridArea = (props) => {
+  return css`
+  grid-area: ${props.gridArea};
+  `
+}
+
+const getVisibility = (props) => {
   if(props.visibility) {
-    return NavbarVisible;
-  } else {
     return NavbarHidden;
+  } else {
+    return NavbarVisible;
+  }
+}
+
+const setNavbarHeight = (props) => {
+  if(props.visibility) {
+    return NavbarCollapsed;
+  } else {
+    return NavbarExpanded;
   }
 }
 
@@ -40,22 +67,43 @@ const NavbarContainer = styled.nav`
     top: 0;
     left: 0;
     width: 100%;
-    height: 95px;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
     font-weight: 500;
     transition: background-color 0.8s ease;
+    ${setNavbarHeight};
     ${setNavbarShade}
+  }
+  @media only screen and ${device.m} {
+    height: 95px;
   }
 `;
 
 const NavbarListContainer = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  padding: 10px 20px;
-  margin: 0;
+  @media only screen and ${device.xs} {
+    width: 100%;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+      "logo cart hamburger"
+      "shop shop shop"
+      "about about about"
+      "contact contact contact"
+      "login login login";
+  }
+
+  }
+
+  @media only screen and ${device.m} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const NavbarIconContainer = styled.li`
@@ -77,15 +125,29 @@ const NavbarIcon = styled(Icon)`
 
 const NavbarListItem = styled(Link)`
   @media only screen and ${device.xs} {
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 18px 14px;
     cursor: pointer;
     text-decoration: none;
-    color: #ddc9bc;
+    color: #ddc9bc;   
+    ${getGridArea};
+    ${getVisibility};
+
 
     &:first-child {
-      display: inline-block;      
+      display: inline-block;
     }
+
+    &:nth-last-child(2) {      
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        border-bottom: none;
+      }
+    }   
+
   }
 
   @media only screen and ${device.m} {
@@ -98,7 +160,11 @@ const NavbarListItem = styled(Link)`
 
     &:first-child {
       margin-right: auto;
-    }    
+
+      &:hover {
+        border-bottom: none;
+      }
+    }  
   }
 `;
 
@@ -110,6 +176,7 @@ const HamburgerMenu = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
+    ${getGridArea}
   }
 
   @media only screen and ${device.m} {

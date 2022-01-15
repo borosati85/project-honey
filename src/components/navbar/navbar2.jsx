@@ -21,6 +21,7 @@ import {
 
 const Navbar = ({ currentUser, hidden }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [visibility, setVisibility] = useState(false);
 
   const handleScroll = (event) => {
     setScrollOffset((prevState) => window.pageYOffset);
@@ -56,31 +57,31 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem to="/shop">
+        <NavbarListItem visibility={visibility} to="/shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 
-        <NavbarListItem as={HashLink} to="/#about">
+        <NavbarListItem visibility={visibility} as={HashLink} to="/#about">
           <li>Rólunk</li>
         </NavbarListItem>
 
-        <NavbarListItem as={HashLink} to="/#contact">
+        <NavbarListItem visibility={visibility} as={HashLink} to="/#contact">
           <li>Kapcsolat</li>
         </NavbarListItem>
 
         {currentUser ? (
-          <NavbarListItem as="div" onClick={() => auth.signOut()}>
+          <NavbarListItem visibility={visibility} as="div" onClick={() => auth.signOut()}>
             Kijelentkezés
           </NavbarListItem>
         ) : (
-          <NavbarListItem to="/login">
+          <NavbarListItem visibility={visibility} to="/login">
             <li>Bejelentkezés</li>
           </NavbarListItem>
         )}
 
         {hidden ? null : <CartDropDown />}
         <NavbarListItem as={CartIcon} />
-        <HamburgerMenu>
+        <HamburgerMenu onClick={()=> setVisibility(!visibility)}>
         <HamburgerMenuBar />
         <HamburgerMenuBar />
         <HamburgerMenuBar />

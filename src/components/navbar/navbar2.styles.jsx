@@ -10,6 +10,14 @@ const NavbarShade = css`
   z-index: 10;
 `;
 
+const NavbarVisible = css`
+  display: block;
+`
+
+const NavbarHidden = css`
+  display: none;
+`
+
 const setNavbarShade = (props) => {
   if (props.scrollOffset >= 200) {
     return NavbarShade;
@@ -17,6 +25,14 @@ const setNavbarShade = (props) => {
     return null;
   }
 };
+
+const setVisibility = (props) => {
+  if(props.visibility) {
+    return NavbarVisible;
+  } else {
+    return NavbarHidden;
+  }
+}
 
 const NavbarContainer = styled.nav`
   @media only screen and ${device.xs} {
@@ -61,7 +77,7 @@ const NavbarIcon = styled(Icon)`
 
 const NavbarListItem = styled(Link)`
   @media only screen and ${device.xs} {
-    display: none;
+    display: block;
     padding: 18px 14px;
     cursor: pointer;
     text-decoration: none;

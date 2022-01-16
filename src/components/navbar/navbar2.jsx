@@ -22,18 +22,19 @@ import {
 const Navbar = ({ currentUser, hidden }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [width, setInnerWIdth] = useState(window.innerWidth);
-  const [visibility, setVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(true);
 
   const handleScroll = (event) => {
     setScrollOffset((prevState) => window.pageYOffset);
   };
 
   const handleResize = (event) => {
-    setInnerWIdth((prevState) => window.innerWIdth);
+    if (!visibility && event.target.innerWidth > 768) setVisibility(true);
+    setInnerWIdth((prevState) => event.target.innerWidth);
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);    
     window.addEventListener("resize", handleResize);
 
     return () => {

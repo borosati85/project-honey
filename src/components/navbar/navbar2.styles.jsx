@@ -31,8 +31,8 @@ const NavbarCollapsed = css`
   height: 95px;
 `
 
-const setNavbarShade = (props) => {
-  if (props.scrollOffset >= 200 || !props.visibility ) {
+const setNavbarShade = ({ scrollOffset, width, visibility }) => {
+  if (scrollOffset >= 200 || (width < 768 && !visibility)) {
     return NavbarShadeOn;
   } else {
     return NavbarShadeOff;

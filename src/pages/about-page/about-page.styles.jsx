@@ -27,7 +27,7 @@ const AboutTitle = styled.h1`
   font-family: "Pushster", cursive;
   font-weight: 400;
   font-size: calc(2vw + 35px);
-  letter-spacing: 2px;
+  letter-spacing: 2px;  
   text-shadow: 2px 2px #000000;
 `;
 

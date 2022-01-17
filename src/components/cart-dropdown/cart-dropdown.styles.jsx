@@ -4,7 +4,8 @@ import { device } from '../../common/breakpoints';
 const CartDropDownContainer = styled.div`
     @media only screen and ${device.xs} {
         position: absolute;
-        width: 100%;
+        width: 300px;
+        border-radius: 20px 0 0 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -13,12 +14,13 @@ const CartDropDownContainer = styled.div`
         border: 1px solid black;
         background-color: white;
         top: 90px;
+        right: 0;
         z-index: 10;
     }
     @media only screen and ${device.m} {
         width: 300px;
         height: 400px;
-        right: 40px;
+        right: 0;
     }
 
 `

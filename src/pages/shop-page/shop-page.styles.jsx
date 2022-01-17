@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import './shop.styles.scss';
 
 const ShopPageContainer = styled.section`
     padding: 60px 40px;    
@@ -10,13 +11,12 @@ const ShopPageContainer = styled.section`
 `
 
 const ShopPageTitle = styled.h1`
-    font-family: 'Architects Daughter', cursive;
-    text-transform: uppercase;
-    letter-spacing: 2vw;
+    font-family: 'Pushster', cursive;
+    text-shadow: 2px 2px #000000;
     font-size: calc(2vw + 25px);
-    color: white;
+    letter-spacing: 2px;
+    color: #DDC9BC;
     width: fit-content;
-    background-color: black;
 `
 
 const ShopProductsContainer = styled.div`

@@ -7,7 +7,7 @@ const ShopPage = () => {
   const products = getProducts();
   return (
     <ShopPageContainer id="shop">
-      <ShopPageTitle>Shop</ShopPageTitle>
+      <ShopPageTitle>Termékeink</ShopPageTitle>
       <ShopProductsContainer>
         {
           products.map((item) => <Product key={item.id} item={item}/>)

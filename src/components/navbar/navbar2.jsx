@@ -65,7 +65,7 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem gridArea="shop" visibility={visibility} to="/shop">
+        <NavbarListItem gridArea="shop" visibility={visibility} as={HashLink} to="/shop/#shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 

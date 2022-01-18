@@ -22,11 +22,18 @@ const ProductTextContainer = styled.div`
 `
 
 const ProductTitle = styled.h3`
-    color: rgb(200, 200, 200);
+    text-align: center;
+    color: #ddc9bc;
+`
+
+const ProductPrice = styled.h3`
+    text-align: center;
+    color: #ddc9bc;
 `
 
 const ProductDescription = styled.p`
-    color: rgb(200, 200, 200);
+    text-align: center;
+    color: #ddc9bc;
 `
 
 const ProductButtonContainer = styled.div`
@@ -40,4 +47,4 @@ const ProductInput = styled.input`
     width: 50px;
 `
 
-export { ProductContainer, ProductImageContainer, ProductImage, ProductTextContainer, ProductTitle, ProductDescription, ProductButtonContainer, ProductInput }
+export { ProductContainer, ProductImageContainer, ProductImage, ProductTextContainer, ProductTitle, ProductPrice, ProductDescription, ProductButtonContainer, ProductInput }

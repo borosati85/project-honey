@@ -1,22 +1,22 @@
 const products = [
     {
         id: 0,
-        title: 'Akácméz',
-        description: 'Akácméz 1000g',
+        title: 'Akácméz (1000 g)',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         price: 3500,
         imageURL: 'https://unblast.com/wp-content/uploads/2019/03/Honey-Jar-Mockup-3.jpg'
     },
     {
         id: 1,
-        title: 'Virágméz',
-        description: 'Virágméz',
+        title: 'Virágméz (1000 g)',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         price: 3000,
         imageURL: 'https://unblast.com/wp-content/uploads/2019/03/Honey-Jar-Mockup-3.jpg'
     },
     {
         id: 2,
-        title: 'Vegyes méz',
-        description: 'Vegyes méz',
+        title: 'Vegyes méz (1000 g)',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         price: 3200,
         imageURL: 'https://unblast.com/wp-content/uploads/2019/03/Honey-Jar-Mockup-3.jpg'
     },

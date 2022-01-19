@@ -4,6 +4,11 @@ const SignInContainer = styled.div`
     width: 380px;
     display: flex;
     flex-direction: column;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 const SignInTitle = styled.h2`

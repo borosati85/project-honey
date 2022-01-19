@@ -3,7 +3,14 @@ import styled from "styled-components";
 const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 380px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const SignUpTitleContainer = styled.h2`

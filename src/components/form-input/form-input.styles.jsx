@@ -8,7 +8,7 @@ const shrink = css`
 
 const Container = styled.div`
     position: relative;
-    margin: 45px 10px;
+    width: 100%;
 `
 
 const setShrink = ({ focused, valueLength }) => {
@@ -21,10 +21,10 @@ const setShrink = ({ focused, valueLength }) => {
 
 const FormInputContainer = styled.input`
     background: none;
-    background-color: white;
+    background-color: transparent;
     color: grey;
     font-size: 18px;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 5px 10px 5px;
     display: block;
     width: 100%;
     border-radius: 0;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckoutPageContainer, CheckoutItemsContainer, CheckoutItemsHeaderTextContainer, DeliveryAndPaymentContainer, DeliveryContainer, PaymentContainer, CartTotalContainer, DeliveryFormContainer } from './checkout-page.styles';
+import { CheckoutPageContainer, CheckoutItemsContainer, CheckoutItemsHeaderTextContainer, DeliveryAndPaymentContainer, DeliveryContainer, PaymentContainer, CartTotalContainer, DeliveryFormContainer, OrderButtonContainer } from './checkout-page.styles';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -44,7 +44,7 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
                 cartItems.length ?
                 cartItems.map(cartItem => <CheckoutItem key={cartItem.id} item={cartItem}/>)
                 :
-                <Navigate to='/shop'/>
+                <Navigate to='/shop/#shop'/>
             }
             <DeliveryAndPaymentContainer>
                 <DeliveryContainer>
@@ -128,12 +128,12 @@ const CheckoutPage = ({ cartItems, cartItemsTotal, deliveryCost, setDelivery, se
                     />
                 </DeliveryFormContainer>
             </div>
-
+            <OrderButtonContainer>
             {
                 paymentType === 'debit-card' ? <StripeCheckoutButton price={cartItemsTotal + deliveryCost}/> 
                 : <CustomButton>Megrendelés leadása</CustomButton>
             }
-
+            </OrderButtonContainer>
 
         </CheckoutPageContainer>
     )

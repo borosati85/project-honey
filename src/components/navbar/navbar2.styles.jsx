@@ -31,8 +31,8 @@ const NavbarCollapsed = css`
   height: 95px;
 `
 
-const setNavbarShade = ({ scrollOffset, width, visibility }) => {
-  if (scrollOffset >= 200 || (width < 768 && !visibility)) {
+const setNavbarShade = ({ scrollOffset, width, visibility, location }) => {
+  if (scrollOffset >= 200 || (width < 768 && !visibility) || location.pathname === '/login' || location.pathname === '/checkout' ) {
     return NavbarShadeOn;
   } else {
     return NavbarShadeOff;

@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 const LoginPageContainer = styled.div`
-    background-color: rgb(50,50,50);
     min-height: 100vh;
-    padding-top: 100px;
-    
+    padding-top: 200px;    
 `
 
 const OptionsContainer = styled.div`

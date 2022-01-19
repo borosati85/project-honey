@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const CheckoutPageContainer = styled.div`
-    width: 55%;
+    width: 65%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 100px auto 0;
+    margin: 200px auto 50px;
 `
 
 const CheckoutItemsContainer = styled.div`
@@ -51,9 +50,14 @@ const CartTotalContainer = styled.div`
 `
 
 const DeliveryFormContainer = styled.form`
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
     gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 `
 
-export { CheckoutPageContainer, CheckoutItemsContainer, CheckoutItemsHeaderTextContainer, DeliveryAndPaymentContainer, DeliveryContainer, PaymentContainer, CartTotalContainer, DeliveryFormContainer }
+const OrderButtonContainer = styled.div`
+    margin: 20px auto 20px auto;
+`
+
+export { CheckoutPageContainer, CheckoutItemsContainer, CheckoutItemsHeaderTextContainer, DeliveryAndPaymentContainer, DeliveryContainer, PaymentContainer, CartTotalContainer, DeliveryFormContainer, OrderButtonContainer }

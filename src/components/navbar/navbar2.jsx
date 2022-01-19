@@ -46,7 +46,7 @@ const Navbar = ({ currentUser, hidden }) => {
   let location = useLocation();
 
   return (
-    <NavbarContainer visibility={visibility} scrollOffset={scrollOffset} width={width}>
+    <NavbarContainer visibility={visibility} scrollOffset={scrollOffset} width={width} location={location}>
       <NavbarListContainer>
 
         {location.pathname === "/" ? (

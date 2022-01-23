@@ -17,7 +17,11 @@ const INITIAL_STATE = {
         country: 'Magyarország',
         city: '',
         post: '',
-        address: ''
+        address: '',
+        invoiceName: '',
+        invoiceCity: '',
+        invoicePost: '',
+        invoiceAddress: ''
     }
 }
 

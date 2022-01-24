@@ -31,4 +31,10 @@ const setUserInput = (event) => ({
     }
 )
 
-export { setCurrentUser, setDelivery, setPayment, setUserInput };
+const addExistingUser = (user) => ({
+    type: UserActionTypes.ADD_EXISTING_USER,
+    payload: {
+        [user.name]: user
+    }
+})
+export { setCurrentUser, setDelivery, setPayment, setUserInput, addExistingUser };

@@ -23,7 +23,8 @@ const INITIAL_STATE = {
         invoiceCity: '',
         invoicePost: '',
         invoiceAddress: ''
-    }
+    },
+    existingUsers: {}
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -55,6 +56,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 userInput: { ...state.userInput, ...action.payload}
+            }
+        
+        case UserActionTypes.ADD_EXISTING_USER:
+            return {
+                ...state,
+                existingUsers: {...state.existingUsers, ...action.payload}
             }
 
         default: return state;        

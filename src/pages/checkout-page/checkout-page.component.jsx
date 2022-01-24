@@ -3,15 +3,45 @@ import { CheckoutPageContainer, CartTotalContainer, OrderButtonContainer } from 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCartItemsTotal } from '../../redux/cart/cart.selectors';
-import { selectDeliveryCost, selectPaymentType } from '../../redux/user/user.selectors.js'
-import CustomButton from '../../components/custom-button/custom-button.component'
+import { selectDeliveryCost, selectPaymentType, selectUserInput } from '../../redux/user/user.selectors.js';
+import { addExistingUser } from '../../redux/user/user.action';
+import CustomButton from '../../components/custom-button/custom-button.component';
 import StripeCheckoutButton from '../../components/stripe-button/StripeButton.component';
 import CheckoutSummaryComponent from '../../components/checkout-summary/checkout-summary.component';
 import UserAddressInputForm from '../../components/user-address-input-form/user-address-input-form.component';
 
 
 
-const CheckoutPage = ({ cartItemsTotal, deliveryCost, paymentType }) => {
+const CheckoutPage = ({ cartItemsTotal, deliveryCost, paymentType, userInput, addExistingUser }) => {
+    const handleClick = () => {
+        //validation
+        if(
+            !userInput.useDifferentAddressForInvoice
+            && userInput.name
+            && userInput.email
+            && userInput.tel 
+            && userInput.city 
+            && userInput.post 
+            && userInput.address
+            || userInput.useDifferentAddressForInvoice
+            && userInput.name
+            && userInput.email
+            && userInput.tel 
+            && userInput.city 
+            && userInput.post 
+            && userInput.address
+            && userInput.invoiceName 
+            && userInput.invoiceCity
+            && userInput.invoicePost 
+            && userInput.invoiceAddress
+        ){
+            addExistingUser(userInput);
+            alert('Köszönjük a megrendelést');
+        } else {
+            alert('Kérjük töltse ki a címadatokat');
+        }
+
+    }
     return (
         <CheckoutPageContainer>
             <CheckoutSummaryComponent />
@@ -20,7 +50,7 @@ const CheckoutPage = ({ cartItemsTotal, deliveryCost, paymentType }) => {
             <OrderButtonContainer>
             {
                 paymentType === 'debit-card' ? <StripeCheckoutButton price={cartItemsTotal + deliveryCost}/> 
-                : <CustomButton>Megrendelés leadása</CustomButton>
+                : <CustomButton onClick={handleClick}>Megrendelés</CustomButton>
             }
             </OrderButtonContainer>
 
@@ -32,6 +62,11 @@ const mapStateToProps = createStructuredSelector ({
     cartItemsTotal: selectCartItemsTotal,
     deliveryCost: selectDeliveryCost,
     paymentType: selectPaymentType,
+    userInput: selectUserInput
 })
 
-export default connect(mapStateToProps)(CheckoutPage);
+const dispatchStateToProps = dispatch => ({
+    addExistingUser: user => dispatch(addExistingUser(user))
+})
+
+export default connect(mapStateToProps, dispatchStateToProps)(CheckoutPage);

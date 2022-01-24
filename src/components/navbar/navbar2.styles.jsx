@@ -41,7 +41,7 @@ const setNavbarShade = ({ scrollOffset, width, visibility, location }) => {
 
 const getGridArea = (props) => {
   return css`
-  grid-area: ${props.gridArea};
+  grid-area: ${props.gridarea};
   `
 }
 
@@ -81,6 +81,7 @@ const NavbarContainer = styled.nav`
 
 const NavbarListContainer = styled.ul`
   @media only screen and ${device.xs} {
+    height: 100%;
     width: 100%;
     list-style: none;
     padding: 10px 20px;
@@ -95,8 +96,6 @@ const NavbarListContainer = styled.ul`
       "about about about"
       "contact contact contact"
       "login login login";
-  }
-
   }
 
   @media only screen and ${device.m} {

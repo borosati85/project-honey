@@ -23,7 +23,6 @@ const Navbar = ({ currentUser, hidden }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [width, setInnerWIdth] = useState(window.innerWidth);
   const [visibility, setVisibility] = useState(true);
-
   const handleScroll = (event) => {
     setScrollOffset((prevState) => window.pageYOffset);
   };
@@ -50,14 +49,14 @@ const Navbar = ({ currentUser, hidden }) => {
       <NavbarListContainer>
 
         {location.pathname === "/" ? (
-          <NavbarListItem gridArea="logo" as={HashLink} to="/#main">
+          <NavbarListItem gridarea="logo" as={HashLink} to="/#main">
             <NavbarIconContainer>
               <NavbarIcon />
               BM
             </NavbarIconContainer>
           </NavbarListItem>
         ) : (
-          <NavbarListItem gridArea="logo" to="/">
+          <NavbarListItem gridarea="logo" to="/">
             <NavbarIconContainer>
               <NavbarIcon />
               BM
@@ -65,33 +64,33 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem gridArea="shop" visibility={visibility} as={HashLink} to="/shop/#shop">
+        <NavbarListItem gridarea="shop" visibility={visibility} as={HashLink} to="/shop/#shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 
-        <NavbarListItem gridArea="about" visibility={visibility} as={HashLink} to="/#about">
+        <NavbarListItem gridarea="about" visibility={visibility} as={HashLink} to="/#about">
           <li>Rólunk</li>
         </NavbarListItem>
 
-        <NavbarListItem gridArea="contact" visibility={visibility} as={HashLink} to="/#contact">
+        <NavbarListItem gridarea="contact" visibility={visibility} as={HashLink} to="/#contact">
           <li>Kapcsolat</li>
         </NavbarListItem>
 
         {currentUser ? (
-          <NavbarListItem gridArea="login" visibility={visibility} as="div" onClick={() => auth.signOut()}>
+          <NavbarListItem gridarea="login" visibility={visibility} as="div" onClick={() => auth.signOut()}>
             Kijelentkezés
           </NavbarListItem>
         ) : (
-          <NavbarListItem gridArea="login" visibility={visibility} to="/login">
+          <NavbarListItem gridarea="login" visibility={visibility} to="/login">
             <li>Bejelentkezés</li>
           </NavbarListItem>
         )}
 
         {hidden ? null : <CartDropDown />}
-        <NavbarListItem gridArea="cart" as='div'>
+        <NavbarListItem gridarea="cart" as='div'>
           <CartIcon />
         </NavbarListItem>        
-        <HamburgerMenu gridArea="hamburger" onClick={()=> setVisibility(!visibility)}>
+        <HamburgerMenu gridarea="hamburger" onClick={()=> setVisibility(!visibility)}>
         <HamburgerMenuBar />
         <HamburgerMenuBar />
         <HamburgerMenuBar />

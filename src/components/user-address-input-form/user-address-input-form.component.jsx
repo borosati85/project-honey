@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { DeliveryFormContainer } from './user-address-input-form.style';
 import FormInput from '../form-input/form-input.component';
 import { connect } from 'react-redux';
@@ -7,17 +7,21 @@ import { selectUserInput } from '../../redux/user/user.selectors';
 import { setUserInput } from '../../redux/user/user.action';
 
 const UserAddressInputForm = ( {userInput, setUserInput} ) => {
-    const [showSecondAddress, toggleSecondAddress] = useState(true);
-
-    const handleAddressDisplay = () => {
-        toggleSecondAddress(prevState => !prevState);
-    };
-
     return (
         <div className='details'>
-            <p><input type='checkbox' onChange={handleAddressDisplay} />Szállítási és számlázási adatok megegyeznek</p>
+            <p><input name='useDifferentAddressForInvoice' type='checkbox' checked={!userInput.useDifferentAddressForInvoice} 
+                onChange={(event)=> {
+                    setUserInput({
+                        target: {
+                            name: event.target.name,
+                            value: !event.target.checked
+                        }
+                    })}
+                } 
+                
+                />Szállítási és számlázási adatok megegyeznek</p>
             {
-                showSecondAddress ?
+                userInput.useDifferentAddressForInvoice ?
                 <p>Szállítási adatok</p>
                 :
                 <p>Szállítási és számlázási adatok</p>
@@ -81,7 +85,7 @@ const UserAddressInputForm = ( {userInput, setUserInput} ) => {
                 />
             </DeliveryFormContainer>
             {
-                showSecondAddress ? 
+                userInput.useDifferentAddressForInvoice ? 
                     <div>
                     <p>Számlázási Adatok</p>
                     <DeliveryFormContainer>

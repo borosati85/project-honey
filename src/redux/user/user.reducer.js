@@ -18,6 +18,7 @@ const INITIAL_STATE = {
         city: '',
         post: '',
         address: '',
+        useDifferentAddressForInvoice: false,
         invoiceName: '',
         invoiceCity: '',
         invoicePost: '',

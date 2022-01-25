@@ -28,4 +28,9 @@ const selectUserInput = createSelector(
     user => user.userInput
 )
 
-export { selectCurrentUser, selectDeliveryType, selectPaymentType, selectDeliveryCost, selectUserInput};
+const selectExistingUsers = createSelector(
+    [selectUser],
+    user => user.existingUsers
+)
+
+export { selectCurrentUser, selectDeliveryType, selectPaymentType, selectDeliveryCost, selectUserInput, selectExistingUsers};

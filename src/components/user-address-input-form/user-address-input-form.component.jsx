@@ -31,6 +31,7 @@ const UserAddressInputForm = ( {userInput, setUserInput} ) => {
                 type='text'
                 name='name' 
                 label='Név' 
+                displaySuggestions={true}
                 value={userInput.name}
                 onChange={(event)=> setUserInput(event)}
                 required

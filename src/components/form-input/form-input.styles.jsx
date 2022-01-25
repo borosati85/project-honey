@@ -6,6 +6,14 @@ const shrink = css`
     color: black;
 `
 
+const show = css`
+    display: block;
+`
+
+const hide = css`
+    display: none;
+`
+
 const Container = styled.div`
     position: relative;
     width: 100%;
@@ -49,4 +57,22 @@ const FormInputLabel = styled.label`
     ${setShrink}
 `
 
-export { Container, FormInputContainer, FormInputLabel }
+const showSuggestions = props => {
+    if (props.suggestions) {
+        return show;
+    } else {
+        return hide;
+    }
+}
+
+const SuggestionsContainer = styled.div`
+    width: 100%;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: yellow;
+    ${showSuggestions}
+`
+
+export { Container, FormInputContainer, FormInputLabel, SuggestionsContainer }

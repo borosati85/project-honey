@@ -71,10 +71,19 @@ const SuggestionsContainer = styled.div`
   position: absolute;
   bottom: 25px;
   left: 0px;
-  background-color: yellow;
+  background-color: white;
   transform: translateY(100%);
   z-index: 10;
   ${showSuggestions}
 `;
 
-export { Container, FormInputContainer, FormInputLabel, SuggestionsContainer };
+const Suggestion = styled.p`
+  padding: 5px;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer
+  }
+`
+
+export { Container, FormInputContainer, FormInputLabel, SuggestionsContainer, Suggestion };

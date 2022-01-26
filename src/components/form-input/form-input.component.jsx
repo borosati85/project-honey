@@ -3,9 +3,14 @@ import {
   Container,
   FormInputContainer,
   FormInputLabel,
-  SuggestionsContainer
+  SuggestionsContainer,
+  Suggestion
 } from "./form-input.styles";
 import { useState } from "react";
+import { setUserInput } from "../../redux/user/user.action";
+import { selectUserInput, selectExistingUsers } from '../../redux/user/user.selectors';
+import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
 
 const FormInput = ({
   handleChange,
@@ -16,9 +21,25 @@ const FormInput = ({
   suggestions,
   userInput,
   existingUsers,
+  setUserInput,
   ...otherProps
 }) => {
   const [focused, setFocus] = useState(false);
+
+  const handleClick = event => {
+      const name = event.target.innerText;
+      const user = existingUsers[name];
+      for (let prop in user) {
+          const data = {
+              target: {
+                  name: prop,
+                  value: user[prop]
+              }
+          }
+          setUserInput(data);
+      }
+
+  }
 
   return (
     <Container>
@@ -28,7 +49,7 @@ const FormInput = ({
       >
         {suggestions
           ? suggestions.length > 0
-            ? suggestions.map((name) => <p>{name}</p>)
+            ? suggestions.map((name) => <Suggestion onClick={handleClick} key={name}>{name}</Suggestion>)
             : null
           : null}
       </SuggestionsContainer>
@@ -48,4 +69,13 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+const mapStateToProps = createStructuredSelector({
+    userInput: selectUserInput,
+    existingUsers: selectExistingUsers
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    setUserInput: (input) => dispatch(setUserInput(input))
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormInput);

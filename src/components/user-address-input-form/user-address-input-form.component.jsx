@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { DeliveryFormContainer } from "./user-address-input-form.style";
 import FormInput from "../form-input/form-input.component";
 import { connect } from "react-redux";

@@ -69,9 +69,11 @@ const SuggestionsContainer = styled.div`
   width: 100%;
   font-size: 12px;
   position: absolute;
-  top: -50px;
+  bottom: 25px;
   left: 0px;
   background-color: yellow;
+  transform: translateY(100%);
+  z-index: 10;
   ${showSuggestions}
 `;
 

@@ -29,7 +29,7 @@ const FormInput = ({
         {suggestions
           ? suggestions.length > 0
             ? suggestions.map((name) => <p>{name}</p>)
-            : "no suggestions"
+            : null
           : null}
       </SuggestionsContainer>
       <FormInputContainer

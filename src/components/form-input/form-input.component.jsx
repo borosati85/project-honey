@@ -6,9 +6,12 @@ import {
   SuggestionsContainer,
   Suggestion
 } from "./form-input.styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setUserInput } from "../../redux/user/user.action";
-import { selectUserInput, selectExistingUsers } from '../../redux/user/user.selectors';
+import {
+  selectUserInput,
+  selectExistingUsers
+} from "../../redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 
@@ -17,7 +20,6 @@ const FormInput = ({
   label,
   value,
   key,
-  displaySuggestions,
   suggestions,
   userInput,
   existingUsers,
@@ -25,31 +27,41 @@ const FormInput = ({
   ...otherProps
 }) => {
   const [focused, setFocus] = useState(false);
+  const [visible, setVisibile] = useState(true);
 
-  const handleClick = event => {
-      const name = event.target.innerText;
-      const user = existingUsers[name];
-      for (let prop in user) {
-          const data = {
-              target: {
-                  name: prop,
-                  value: user[prop]
-              }
-          }
-          setUserInput(data);
-      }
+  const handleClick = (event) => {
+    const name = event.target.innerText;
+    const user = existingUsers[name];
+    for (let prop in user) {
+      const data = {
+        target: {
+          name: prop,
+          value: user[prop]
+        }
+      };
+      setUserInput(data);
+      setVisibile(false);
+    }
+  };
 
-  }
+  useEffect(() => {
+    const existingNames = Object.keys(existingUsers);
+    const name = userInput.name.toLowerCase();
+    existingNames.find((fullName) => fullName.toLowerCase() === name)
+      ? setVisibile(false)
+      : setVisibile(true);
+  });
 
   return (
     <Container>
-      <SuggestionsContainer
-        suggestions={suggestions}
-        displaySuggestions={displaySuggestions}
-      >
+      <SuggestionsContainer suggestions={suggestions} visible={visible}>
         {suggestions
           ? suggestions.length > 0
-            ? suggestions.map((name) => <Suggestion onClick={handleClick} key={name}>{name}</Suggestion>)
+            ? suggestions.map((name) => (
+                <Suggestion onClick={handleClick} key={name}>
+                  {name}
+                </Suggestion>
+              ))
             : null
           : null}
       </SuggestionsContainer>
@@ -70,12 +82,12 @@ const FormInput = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-    userInput: selectUserInput,
-    existingUsers: selectExistingUsers
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    setUserInput: (input) => dispatch(setUserInput(input))
-  });
+  userInput: selectUserInput,
+  existingUsers: selectExistingUsers
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setUserInput: (input) => dispatch(setUserInput(input))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormInput);

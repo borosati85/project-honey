@@ -6,11 +6,11 @@ const shrink = css`
   color: black;
 `;
 
-const show = css`
+const visible = css`
   display: block;
 `;
 
-const hide = css`
+const hidden = css`
   display: none;
 `;
 
@@ -57,13 +57,7 @@ const FormInputLabel = styled.label`
   ${setShrink}
 `;
 
-const showSuggestions = (props) => {
-  if (props.displaySuggestions) {
-    return show;
-  } else {
-    return hide;
-  }
-};
+const getVisibility = (props) => (props.visible ? visible : hidden);
 
 const SuggestionsContainer = styled.div`
   width: 100%;
@@ -74,16 +68,22 @@ const SuggestionsContainer = styled.div`
   background-color: white;
   transform: translateY(100%);
   z-index: 10;
-  ${showSuggestions}
+  ${getVisibility};
 `;
 
 const Suggestion = styled.p`
   padding: 5px;
 
   &:hover {
-    background-color: rgba(0,0,0,0.1);
-    cursor: pointer
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
-`
+`;
 
-export { Container, FormInputContainer, FormInputLabel, SuggestionsContainer, Suggestion };
+export {
+  Container,
+  FormInputContainer,
+  FormInputLabel,
+  SuggestionsContainer,
+  Suggestion
+};

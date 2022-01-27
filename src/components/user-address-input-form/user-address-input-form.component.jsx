@@ -65,7 +65,6 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="name"
           label="Név"
-          displaySuggestions={true}
           suggestions={suggestions}
           value={userInput.name}
           onChange={handleChange}

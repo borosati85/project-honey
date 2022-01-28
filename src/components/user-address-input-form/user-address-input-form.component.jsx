@@ -8,16 +8,24 @@ import {
   selectExistingUsers
 } from "../../redux/user/user.selectors";
 import { setUserInput } from "../../redux/user/user.action";
+import {
+  getLocationByZipcode,
+  getZipCodesByLocation,
+  getLocationByLetters
+} from "../../data/locations.js";
 
 const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
   const handleChange = (event) => {
     setUserInput(event);
     if (event.target.name === "name") {
       setSuggestions(getSuggestions(event));
+    } else if (event.target.name === "city") {
+      setLocationSuggestions(getLocationByLetters(event.target.value));
     }
   };
 
   const [suggestions, setSuggestions] = useState([]);
+  const [locationSuggestions, setLocationSuggestions] = useState([]);
 
   const getSuggestions = (event) => {
     const users = Object.keys(existingUsers);
@@ -101,6 +109,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="city"
           label="Város"
+          suggestions={locationSuggestions}
           value={userInput.city}
           onChange={handleChange}
         />

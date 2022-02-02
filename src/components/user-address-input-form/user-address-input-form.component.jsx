@@ -73,6 +73,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="name"
           label="Név"
+          suggestionsType='user'
           suggestions={suggestions}
           value={userInput.name}
           onChange={handleChange}
@@ -109,6 +110,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="city"
           label="Város"
+          suggestionsType='location'
           suggestions={locationSuggestions}
           value={userInput.city}
           onChange={handleChange}

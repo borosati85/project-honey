@@ -1,7 +1,7 @@
 import React from 'react';
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { signInWithGoogle, signInWithEmail } from '../../firebase/firebase.utils';
 import { SignInContainer, SignInTitle, ButtonContainer } from './signin.styles';
 
 class SignIn extends React.Component {
@@ -13,8 +13,7 @@ class SignIn extends React.Component {
         }
     }
 
-    hanandleSubmit = event => {
-        event.preventDefault();
+    hanandleSubmit = () => {
         this.setState({email: '', password:''})
     }
 
@@ -47,7 +46,7 @@ class SignIn extends React.Component {
                         required>
                     </FormInput>
                     <ButtonContainer>
-                        <CustomButton type='submit'>Bejelentkezés</CustomButton>
+                        <CustomButton type='button' onClick={()=>signInWithEmail(this.state.email, this.state.password)}>Bejelentkezés</CustomButton>
                         <CustomButton type='button' isGoogleSignin onClick={signInWithGoogle}>Google bejelentkezés</CustomButton>
                     </ButtonContainer>
                 </form>

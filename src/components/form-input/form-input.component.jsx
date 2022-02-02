@@ -6,7 +6,7 @@ import {
   SuggestionsContainer,
   Suggestion
 } from "./form-input.styles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { setUserInput } from "../../redux/user/user.action";
 import {
   selectUserInput,
@@ -21,6 +21,7 @@ const FormInput = ({
   value,
   key,
   suggestions,
+  suggestionsType,
   userInput,
   existingUsers,
   setUserInput,
@@ -30,35 +31,40 @@ const FormInput = ({
   const [visible, setVisibile] = useState(true);
 
   const handleClick = (event) => {
-    const name = event.target.innerText;
-    const user = existingUsers[name];
-    for (let prop in user) {
+    if (suggestionsType === 'user') {
+      const name = event.target.innerText;
+      const user = existingUsers[name];
+      for (let prop in user) {
+        const data = {
+          target: {
+            name: prop,
+            value: user[prop]
+          }
+        };
+        setUserInput(data);
+      }
+    } else if (suggestionsType === 'location') {
+      const name = 'city';
+      const value = event.target.innerText;
       const data = {
         target: {
-          name: prop,
-          value: user[prop]
+          name: name,
+          value: value
         }
       };
       setUserInput(data);
-      setVisibile(false);
     }
-  };
 
-  useEffect(() => {
-    const existingNames = Object.keys(existingUsers);
-    const name = userInput.name.toLowerCase();
-    existingNames.find((fullName) => fullName.toLowerCase() === name)
-      ? setVisibile(false)
-      : setVisibile(true);
-  });
+    setVisibile(false);
+  };
 
   return (
     <Container>
       <SuggestionsContainer suggestions={suggestions} visible={visible}>
         {suggestions
           ? suggestions.length > 0
-            ? suggestions.map((name) => (
-                <Suggestion onClick={handleClick} key={name}>
+            ? suggestions.map((name, idx) => (
+                <Suggestion onClick={handleClick} key={idx}>
                   {name}
                 </Suggestion>
               ))
@@ -66,8 +72,8 @@ const FormInput = ({
           : null}
       </SuggestionsContainer>
       <FormInputContainer
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onFocus={() => { setFocus(true); setVisibile(true) }}
+        onBlur={() => { setFocus(false); setTimeout(()=>setVisibile(false),1000) }}
         onChange={handleChange}
         value={value}
         {...otherProps}

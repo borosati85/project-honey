@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAunaXNsjdE7vvv__d-heabnO1hMXulQeU",
@@ -17,9 +17,9 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 
 //getting the authentication object, so we can use it, or export it
-const auth = getAuth();
+const auth = getAuth(app);
 
-const signInWithGoogle = ()=> 
+const signInWithGoogle = () => 
   signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -39,32 +39,45 @@ const signInWithGoogle = ()=>
     // ...
   });
 
-  //gettint the firestore, to store users in the database
-  const firestore = getFirestore();
+const signInWithEmail = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+  });
+}
 
-  //store user data in firebase
-  const createUserProfileDocument = async (userAuth, additionalData)=> {
-    if (!userAuth) return;
+//gettint the firestore, to store users in the database
+const firestore = getFirestore();
 
-    const userRef = doc(firestore, `users/${userAuth.uid}`)
-    const snapshot = await getDoc(userRef);
+//store user data in firebase
+const createUserProfileDocument = async (userAuth, additionalData)=> {
+  if (!userAuth) return;
+  const userRef = doc(firestore, "users", `${userAuth.uid}`)
+  const snapshot = await getDoc(userRef);
 
-    if (!snapshot.exists) {
-      const { displayName, email } = userAuth;
-      const createdAt = new Date();
+  if (!snapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
 
-      try {
-        await setDoc(userRef, {
-          displayName,
-          email,
-          createdAt,
-          ...additionalData
-        });
-      } catch (error) {
-        console.log('error creating user ' + error);
-      }
+    try {
+      await setDoc(userRef, {
+        displayName,
+        email,
+        createdAt,
+        ...additionalData
+      });
+    } catch (error) {
+      console.log('error creating user ' + error);
     }
-    return userRef;
   }
+  return userRef;
+}
 
-export { signInWithGoogle, auth, createUserProfileDocument }; 
+export { signInWithGoogle, auth, createUserProfileDocument, signInWithEmail }; 

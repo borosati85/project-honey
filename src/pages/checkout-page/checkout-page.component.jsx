@@ -17,6 +17,7 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import StripeCheckoutButton from "../../components/stripe-button/StripeButton.component";
 import CheckoutSummaryComponent from "../../components/checkout-summary/checkout-summary.component";
 import UserAddressInputForm from "../../components/user-address-input-form/user-address-input-form.component";
+import { auth, storeUserAddress } from "../../firebase/firebase.utils";
 
 const CheckoutPage = ({
   cartItemsTotal,
@@ -48,11 +49,13 @@ const CheckoutPage = ({
         userInput.invoiceAddress)
     ) {
       addExistingUser(userInput);
+      storeUserAddress(auth.currentUser, userInput);
       alert("Köszönjük a megrendelést");
     } else {
       alert("Kérjük töltse ki a címadatokat");
     }
   };
+
   return (
     <CheckoutPageContainer>
       <CheckoutSummaryComponent />

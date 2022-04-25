@@ -1,3 +1,4 @@
+/*
 const locations = {
   8127: "Aba",
   8128: "Aba",
@@ -3594,3 +3595,4 @@ const getLocationByLetters = (letters) =>
   ].slice(0, 5);
 
 export { getLocationByZipcode, getZipCodesByLocation, getLocationByLetters };
+*/

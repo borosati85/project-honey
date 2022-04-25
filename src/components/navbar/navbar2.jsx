@@ -45,7 +45,7 @@ const Navbar = ({ currentUser, hidden }) => {
   let location = useLocation();
 
   return (
-    <NavbarContainer visibility={visibility} scrollOffset={scrollOffset} width={width} location={location}>
+    <NavbarContainer visibility={visibility ? 1 : 0} scrollOffset={scrollOffset} width={width} location={location}>
       <NavbarListContainer>
 
         {location.pathname === "/" ? (
@@ -64,24 +64,24 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem gridarea="shop" visibility={visibility} as={HashLink} to="/shop/#shop">
+        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="/shop/#shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 
-        <NavbarListItem gridarea="about" visibility={visibility} as={HashLink} to="/#about">
+        <NavbarListItem gridarea="about" visibility={visibility ? 1 : 0} as={HashLink} to="/#about">
           <li>Rólunk</li>
         </NavbarListItem>
 
-        <NavbarListItem gridarea="contact" visibility={visibility} as={HashLink} to="/#contact">
+        <NavbarListItem gridarea="contact" visibility={visibility ? 1 : 0} as={HashLink} to="/#contact">
           <li>Kapcsolat</li>
         </NavbarListItem>
 
         {currentUser ? (
-          <NavbarListItem gridarea="login" visibility={visibility} as="div" onClick={() => auth.signOut()}>
+          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} as="div" onClick={() => auth.signOut()}>
             Kijelentkezés
           </NavbarListItem>
         ) : (
-          <NavbarListItem gridarea="login" visibility={visibility} to="/login">
+          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} to="/login">
             <li>Bejelentkezés</li>
           </NavbarListItem>
         )}

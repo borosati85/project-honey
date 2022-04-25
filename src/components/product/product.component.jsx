@@ -7,14 +7,14 @@ import { addItem } from '../../redux/cart/cart.actions';
 const Product = ({item, addItem}) => {
     const [quantity, setQuantity] = useState(1);
 
-    const { title, price, description, imageURL } = item;
+    const { name, price, description, imageURL } = item;
     return (
         <ProductContainer>
             <ProductImageContainer>
                 <ProductImage src={imageURL}/>
             </ProductImageContainer>
             <ProductTextContainer>
-                <ProductTitle>{title}</ProductTitle>
+                <ProductTitle>{name}</ProductTitle>
                 <ProductPrice>{price} Ft</ProductPrice>
                 <ProductDescription>{description}</ProductDescription>
                 <ProductButtonContainer>                

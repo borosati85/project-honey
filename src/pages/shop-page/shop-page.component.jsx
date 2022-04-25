@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { ShopPageContainer, ShopPageTitle, ShopProductsContainer } from './shop-page.styles';
 import Product from '../../components/product/product.component';
-import getProducts from '../../data/data.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchSuppliesStart } from '../../redux/shop/shop-actions';
+import Spinner from '../../components/spinner/spinner.component';
 
 const ShopPage = () => {
-  const products = getProducts();
+  const dispatch = useDispatch();
+
+  useLayoutEffect(()=> {
+    dispatch(fetchSuppliesStart());
+  },[])
+
+  const products = useSelector(state => state.shop.supplies);
+  const fetching = useSelector(state => state.shop.isFetching);
+
   return (
     <ShopPageContainer id="shop">
       <ShopPageTitle>Termékeink</ShopPageTitle>
       <ShopProductsContainer>
-        {
-          products.map((item) => <Product key={item.id} item={item}/>)
+      <Spinner isFetching={fetching}/>
+        {          
+         products.map((item) => <Product key={item.id} item={item}/>)
         }
       </ShopProductsContainer>
     </ShopPageContainer>

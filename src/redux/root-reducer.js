@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
+import shopReducer from './shop/shop-reducer';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
@@ -21,7 +22,8 @@ const rootPersistConfig = {
   
   const rootReducer = combineReducers({
     user: persistReducer(userPersistConfig, userReducer),
-    cart: cartReducer
+    cart: cartReducer,
+    shop: shopReducer
   });
   
   export default persistReducer(rootPersistConfig, rootReducer);

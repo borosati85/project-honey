@@ -79,7 +79,7 @@ const FormInput = ({
         {...otherProps}
       />
       {label ? (
-        <FormInputLabel focused={focused} valueLength={value.length}>
+        <FormInputLabel focused={focused} valueLength={() => value ? value.length : 0 }>
           {label}
         </FormInputLabel>
       ) : null}

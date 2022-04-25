@@ -1,37 +1,20 @@
-import React, { useState } from 'react';
-import { NewsletterContainer, NewsletterContentContainer, NewsletterTitle, NewsletterText, NewsletterInput, NewsletterInputContainer } from './newsletter.styles';
-import CustomButton from '../custom-button/custom-button.component';
+import React from 'react';
+import { NewsletterContainer } from './newsletter.styles';
+import MailchimpSubscribe from "react-mailchimp-subscribe";
+import NewsletterForm from '../newsletter-form/NewsletterForm.component';
 
 const Newsletter = () => {
-    const [userEmail, setUserEmail] = useState('');
-    const handleChange = (event) => {
-        setUserEmail(event.target.value);
-    }
 
-    const validateEmail = (email) => {
-        const pattern = /^[\w\d]{3,}@[\w]{3,}\.[\w]{2,3}$/i
-        return pattern.test(email);
-    }
+    const postUrl = `https://gmail.us20.list-manage.com/subscribe/post?u=f68f021203ed97371ccbe918f&id=761766af1c`;
 
-    const handleSubmit = () => {
-        const email = userEmail;
-        if (validateEmail(email)) {
-            alert('Köszönjük a feliratkozást');
-            setUserEmail('');
-        } else {
-            (alert('Az email cím nem megfelelő'))
-        }
-    }
-
-    return (
+    return (    
     <NewsletterContainer>
-        <NewsletterContentContainer>
-            <NewsletterTitle>Hírlevél feliratkozás</NewsletterTitle>
-            <NewsletterText>Iratkozz fel hírlevelünkre, hogy értesülj legfrissebb termékeinkről, akcióinkról.</NewsletterText>
-            <NewsletterInputContainer>                
-                <NewsletterInput type='email' onChange={handleChange} value={userEmail} placeholder='Email cím'></NewsletterInput><CustomButton onClick={handleSubmit}>Feliratkozás</CustomButton>
-            </NewsletterInputContainer>
-        </NewsletterContentContainer>
+        <MailchimpSubscribe
+            url={postUrl}
+            render={({ subscribe, status, message }) => (
+                <NewsletterForm status={status} message={message} onValidated={formData => subscribe(formData)}/>
+            )}>                
+        </MailchimpSubscribe>
     </NewsletterContainer>
     )
 }

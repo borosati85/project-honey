@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DeliveryFormContainer } from "./user-address-input-form.style";
 import FormInput from "../form-input/form-input.component";
 import { connect } from "react-redux";
@@ -13,6 +13,7 @@ import {
   getZipCodesByLocation,
   getLocationByLetters
 } from "../../data/locations.js";
+import { auth, getUserAddress } from "../../firebase/firebase.utils";
 
 const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
   const handleChange = (event) => {
@@ -26,6 +27,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
 
   const [suggestions, setSuggestions] = useState([]);
   const [locationSuggestions, setLocationSuggestions] = useState([]);
+  const [loadedUserData, setLoadedUserData] = useState(false);
 
   const getSuggestions = (event) => {
     const users = Object.keys(existingUsers);
@@ -44,6 +46,22 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
       return [];
     }
   };
+
+  useEffect(() => {
+    if (!loadedUserData) {
+      getUserAddress(auth.currentUser).then((data) => {
+        for (let entry in data) {
+          setUserInput({
+            target: {
+              name: entry,
+              value: data[entry]
+            }
+          });
+        }
+      });
+      setLoadedUserData(true);
+    }
+  });
 
   return (
     <div className="details">
@@ -73,7 +91,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="name"
           label="Név"
-          suggestionsType='user'
+          suggestionsType="user"
           suggestions={suggestions}
           value={userInput.name}
           onChange={handleChange}
@@ -110,7 +128,7 @@ const UserAddressInputForm = ({ userInput, setUserInput, existingUsers }) => {
           type="text"
           name="city"
           label="Város"
-          suggestionsType='location'
+          suggestionsType="location"
           suggestions={locationSuggestions}
           value={userInput.city}
           onChange={handleChange}

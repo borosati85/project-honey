@@ -13,6 +13,7 @@ import { createUserProfileDocument } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action'
+import { fetchSuppliesStart } from './redux/shop/shop-actions';
 
 import { Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
@@ -22,19 +23,13 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
-    //auth.onAuthStateChanged returns firebase.Unsubscribe method when completed and assigns it to unsubscribeFromAuth
-    //listening to auth object changes - logging in or out
+    const { setCurrentUser, fetchSupplies } = this.props;
 
-    //onAuthStateChanged is a firebase subscription method, which accepts the auth object (imported from firebase utils, which handles authenticating),
-    //and a callback function which takes the user from the auth object, wheter there is user or not (has a value or has null as value)
+    //fetchSupplies();
+
     this.unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {
-      //check if the userAuth is not null, so the user logged in
       if (userAuth) {
-        //creating an user profile in the database, or selecting an existing one, and returning the reference object
         const userRef = await createUserProfileDocument(userAuth);
-
-        //returns the snapshot object(the actual data from the database), and subscribing for changes
         onSnapshot(userRef, snapshot => {
           setCurrentUser({
             id: snapshot.id,
@@ -71,7 +66,8 @@ class App extends React.Component {
 }
 
 const dispatchStateToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user))
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  fetchSupplies: () => dispatch(fetchSuppliesStart())
 })
 
 const mapStateToProps = (state) => ({

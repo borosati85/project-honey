@@ -19,4 +19,7 @@ const clearItemFromCart = item => ({
     payload: item
 })
 
-export { toggleCartHidden, addItem, removeItem, clearItemFromCart }
+const clearAllItemsFromCart = () => ({
+    type: CartActionTypes.CLEAR_ALL_ITEMS_FROM_CART    
+})
+export { toggleCartHidden, addItem, removeItem, clearItemFromCart, clearAllItemsFromCart }

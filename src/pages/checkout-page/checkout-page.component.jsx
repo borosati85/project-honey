@@ -6,7 +6,8 @@ import {
 } from "./checkout-page.styles";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCartItemsTotal } from "../../redux/cart/cart.selectors";
+import { selectCartItems, selectCartItemsTotal } from "../../redux/cart/cart.selectors";
+import { clearAllItemsFromCart } from '../../redux/cart/cart.actions';
 import {
   selectDeliveryCost,
   selectPaymentType,
@@ -19,14 +20,15 @@ import CheckoutSummaryComponent from "../../components/checkout-summary/checkout
 import UserAddressInputForm from "../../components/user-address-input-form/user-address-input-form.component";
 import { auth, storeUserAddress } from "../../firebase/firebase.utils";
 
-const CheckoutPage = ({
+const CheckoutPage = ({  
   cartItemsTotal,
   deliveryCost,
   paymentType,
   userInput,
-  addExistingUser
+  addExistingUser,
+  clearAllItemsFromCart
 }) => {
-  const handleClick = () => {
+  const handleClick = async () => {
     //validation
     if (
       (!userInput.useDifferentAddressForInvoice &&
@@ -50,6 +52,7 @@ const CheckoutPage = ({
     ) {
       addExistingUser(userInput);
       storeUserAddress(auth.currentUser, userInput);
+      clearAllItemsFromCart()
       alert("Köszönjük a megrendelést");
     } else {
       alert("Kérjük töltse ki a címadatokat");
@@ -75,6 +78,7 @@ const CheckoutPage = ({
 };
 
 const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
   cartItemsTotal: selectCartItemsTotal,
   deliveryCost: selectDeliveryCost,
   paymentType: selectPaymentType,
@@ -82,7 +86,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const dispatchStateToProps = (dispatch) => ({
-  addExistingUser: (user) => dispatch(addExistingUser(user))
+  addExistingUser: (user) => dispatch(addExistingUser(user)),
+  clearAllItemsFromCart: () => dispatch(clearAllItemsFromCart())
 });
 
 export default connect(mapStateToProps, dispatchStateToProps)(CheckoutPage);

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import {
   getAuth,
+  signOut,
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword
@@ -20,11 +21,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account'
+});
 
 //getting the authentication object, so we can use it, or export it
 const auth = getAuth(app);
 
-const signInWithGoogle = () =>
+const signInWithGoogle = () =>  
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -44,6 +48,14 @@ const signInWithGoogle = () =>
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });
+  
+  const authSignOut = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
 const signInWithEmail = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)

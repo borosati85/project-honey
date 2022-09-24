@@ -15,11 +15,12 @@ const StripeCheckoutButton = ({ price }) => {
             name='Honey Kft.'
             billingAddress
             shippingAddress
-            description={`Fizetendő összegX: ${price} Ft`}
+            description={`Fizetendő összeg: ${price} Ft`}
             amount={priceForStripe}
             panelLabel='Fizetés kártyával'
             token={onToken}
             stripeKey={publishableKey}
+            currency="HUF"
         />
     )
 }

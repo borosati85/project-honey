@@ -1,75 +1,108 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from './logo.svg';
-import { connect } from 'react-redux';
-import { toggleNavbarLinksHidden } from '../../redux/navbar/navbar.actions';
-import { auth } from '../../firebase/firebase.utils'
-import './navbar.styles.scss';
+import React, { useState, useEffect } from "react";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import { connect } from "react-redux";
+import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import {
+  NavbarContainer,
+  NavbarIcon,
+  NavbarIconContainer,
+  NavbarListContainer,
+  NavbarListItem,
+  HamburgerMenu,
+  HamburgerMenuBar
+} from "./navbar.styles";
 
-function useWindowSize() {
-    const [size, setSize] = useState(0);
-    useLayoutEffect(() => {
-        function updateSize() {
-        setSize(window.innerWidth);
-        }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-}
+const Navbar = ({ currentUser, hidden }) => {
+  const [scrollOffset, setScrollOffset] = useState(0);
+  const [width, setInnerWIdth] = useState(window.innerWidth);
+  const [visibility, setVisibility] = useState(true);
+  const handleScroll = (event) => {
+    setScrollOffset((prevState) => window.pageYOffset);
+  };
 
-const Navbar = ({ hidden, toggleNavBarLinks, user }) => {
-    const width = useWindowSize();
-    return (
-        <nav className="navbar">
-            <Link className="home" to="/">
-                <Logo style={{backgroundColor: 'rgb(231, 218, 142)'}}/>
-                <span className="logo-text">Bee Happy</span>                
-            </Link>
-            <div className="toggle-button" onClick={()=> { 
-                toggleNavBarLinks();
-            } }>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-            </div>
-            { width > 630 || width <= 630 && !hidden ?
-                <ul className="link-container" >
-                    <Link className="menu link" to="/menu">
-                        <li>VÁSÁRLÁS</li>
-                    </Link>
-                    <Link className="about link" to="/gallery">
-                        <li>RÓLUNK</li>
-                    </Link>
-                    <Link className="contact link" to="/contact">
-                        <li>KAPCSOLAT</li>
-                    </Link>
-                    {
-                        user ?
-                        <div className='login link' onClick={()=> auth.signOut()}>KIJELENTKEZÉS</div>
-                        :
-                        <Link className='login link' to='/login'><li>BEJELENTKEZÉS</li></Link>
-                    }
-                </ul>
-                :null
-            }
- 
+  const handleResize = (event) => {
+    if (!visibility && event.target.innerWidth > 768) setVisibility(true);
+    setInnerWIdth((prevState) => event.target.innerWidth);
+  }
 
-        </nav>
-    )
-}
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);    
+    window.addEventListener("resize", handleResize);
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
+  let location = useLocation();
 
+  return (
+    <NavbarContainer visibility={visibility ? 1 : 0} scrollOffset={scrollOffset} width={width} location={location}>
+      <NavbarListContainer>
 
-const mapStateToProps = (state) => ({
-    hidden: state.navbar.hidden,
-    user: state.user.currentUser
-})
+        {location.pathname === "/" ? (
+          <NavbarListItem gridarea="logo" as={HashLink} to="/#main">
+            <NavbarIconContainer>
+              <NavbarIcon />
+              BM
+            </NavbarIconContainer>
+          </NavbarListItem>
+        ) : (
+          <NavbarListItem gridarea="logo" to="/">
+            <NavbarIconContainer>
+              <NavbarIcon />
+              BM
+            </NavbarIconContainer>
+          </NavbarListItem>
+        )}
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleNavBarLinks: ()=> dispatch(toggleNavbarLinksHidden()),
-})
+        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="/shop/#shop">
+          <li>Vásárlás</li>
+        </NavbarListItem>
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+        <NavbarListItem gridarea="about" visibility={visibility ? 1 : 0} as={HashLink} to="/#about">
+          <li>Rólunk</li>
+        </NavbarListItem>
+
+        <NavbarListItem gridarea="contact" visibility={visibility ? 1 : 0} as={HashLink} to="/#contact">
+          <li>Kapcsolat</li>
+        </NavbarListItem>
+
+        {currentUser ? (
+          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} as="div" onClick={() => auth.signOut()}>
+            Kijelentkezés
+          </NavbarListItem>
+        ) : (
+          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} to="/login">
+            <li>Bejelentkezés</li>
+          </NavbarListItem>
+        )}
+
+        {hidden ? null : <CartDropDown />}
+        <NavbarListItem gridarea="cart" as='div'>
+          <CartIcon />
+        </NavbarListItem>        
+        <HamburgerMenu gridarea="hamburger" onClick={()=> setVisibility(!visibility)}>
+        <HamburgerMenuBar />
+        <HamburgerMenuBar />
+        <HamburgerMenuBar />
+      </HamburgerMenu>
+      </NavbarListContainer>
+    </NavbarContainer>
+  );
+};
+
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
+});
+
+export default connect(mapStateToProps)(Navbar);

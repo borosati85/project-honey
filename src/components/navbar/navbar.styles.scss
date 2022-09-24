@@ -1,125 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Waterfall&display=swap');
 
+/*
 .navbar {
-    position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;  
+  transition: background-color 0.8s ease;
+  
+  .navbar__list {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0;
-    height: 60px;
-    color:rgb(35, 35, 35); 
-    background-color: rgb(231, 218, 142);
-    box-shadow: 0px 3px 10px rgb(35, 35, 35); 
-
-
-    a {
-        color:rgb(35, 35, 35); 
-    }
-
-    .home {
-        display: flex;
-        align-items: center;
-
-        .logo-text {
-            text-decoration: none;
-            font-family: Pacifico, 'Open-Sans';
-            font-size: 30px;
-            font-weight: 700px;
-            background-color: rgb(231, 218, 142);
-        }
-    }
-
-    .link-container {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        background-color: rgb(231, 218, 142);
-
-        .link, .link li {
-            color: #333;
-            background-color: rgb(231, 218, 142);
-            text-decoration: none;
-            list-style: none;
-            padding: 16px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            font-weight: 700;
+    justify-content: center;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+  
+    .navbar__list-item {
+      padding: 18px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      color: rgb(200, 200, 200);
     
-            &:hover,
-            &:hover li{
-                background-color:rgb(195, 180, 90);
-            }            
-        }       
-    }
+      &:hover {
+        color: white;
+        border-bottom: 3px solid orange;
+      }
 
-    .toggle-button {
-        cursor: pointer;
-        position: absolute;
-        height: 50px;
-        width: 50px;
-        top: auto;
-        bottom: auto;
-        right: 5px;
-        padding: 0.8rem 0.5rem;
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: rgb(231, 218, 142);
-
-        .bar {
-            width: 100%;
-            height: 5px;
-            background-color: #555;
-            border-radius: 50px;
-        }
+      &:first-child {
+        margin-right: auto;
+      }
+  
+      &:last-child {
+        margin-left: auto;
+        border: 1px solid white;        
 
         &:hover {
-            background-color:rgb(195, 180, 90);
-        }
-    }
-}
-
-@media screen and (max-width: 861px) {
-    .navbar {
-        .link-container{
-            .link,
-            .link li {
-                padding-left: 7px;
-                padding-right: 7px;
-            }
-        }
-    }
-}
-
-
-
-@media screen and (max-width: 718px) {
-  
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      height: fit-content;
-
-      .toggle-button {
-        display: flex;
-      }
-
-      .link-container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-  
-        .link{
-          width: 100%;
-          display: flex;
-          justify-content: center;    
-          padding-top: 8px;
-          padding-bottom: 8px;      
+          background-color: rgba(255, 166, 0, 0.7);
         }
       }
     }
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
 }
+
+.navbar--shade {
+  background-color: rgb(136, 108, 57);
+  box-shadow: 0px 6px 10px black;
+  z-index: 10;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+
+    .navbar__shop,
+    .navbar__about,
+    .navbar__contact,
+    .navbar__login {
+      display: none;
+    }
+
+    .hamburger-menu {
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;      
+      justify-content: space-around;
+      align-items: flex-end;
+
+      .hamburger-menu__bar {
+        width: 40px;
+        height: 6px;
+        background-color: rgb(200, 200, 200);
+        border-radius: 50px;
+      }
+    }
+  }
+}
+*/

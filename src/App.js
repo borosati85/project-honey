@@ -2,7 +2,7 @@ import './App.scss';
 import ShopPage from './pages/shop-page/shop-page.component';
 import LoginPage from './pages/login-page/login-page.component';
 import MainPage from './pages/main-page/main-page2.component';
-import Navbar from './components/navbar/navbar2';
+import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
@@ -24,8 +24,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const { setCurrentUser, fetchSupplies } = this.props;
-
-    //fetchSupplies();
 
     this.unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {
       if (userAuth) {

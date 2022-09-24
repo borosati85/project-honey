@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { size, device } from "../../common/breakpoints";
-import "./navbar2.styles.scss";
+import "./navbar.styles.scss";
 import { Link } from "react-router-dom";
 import { ReactComponent as Icon } from "../../assets/honeycomb.svg";
 

@@ -49,7 +49,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar />        
         <Routes>
-          <Route path="/" element={<MainPage />}/>
+          <Route path="/project-honey" element={<MainPage />}/>
           <Route path="/shop" element={<ShopPage />}/>
           <Route path="/checkout" element={<CheckoutPage />}/>
           <Route 

@@ -48,7 +48,7 @@ const Navbar = ({ currentUser, hidden }) => {
     <NavbarContainer visibility={visibility ? 1 : 0} scrollOffset={scrollOffset} width={width} location={location}>
       <NavbarListContainer>
 
-        {location.pathname === "/" ? (
+        {location.pathname === "/project-honey" ? (
           <NavbarListItem gridarea="logo" as={HashLink} to="/#main">
             <NavbarIconContainer>
               <NavbarIcon />
@@ -56,7 +56,7 @@ const Navbar = ({ currentUser, hidden }) => {
             </NavbarIconContainer>
           </NavbarListItem>
         ) : (
-          <NavbarListItem gridarea="logo" to="/">
+          <NavbarListItem gridarea="logo" to="/project-honey">
             <NavbarIconContainer>
               <NavbarIcon />
               BM

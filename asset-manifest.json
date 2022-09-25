@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/borosati85/project-honey/static/css/main.7e008f5e.chunk.css",
+    "main.js": "/borosati85/project-honey/static/js/main.fc40fe3c.chunk.js",
+    "main.js.map": "/borosati85/project-honey/static/js/main.fc40fe3c.chunk.js.map",
+    "runtime-main.js": "/borosati85/project-honey/static/js/runtime-main.386909f9.js",
+    "runtime-main.js.map": "/borosati85/project-honey/static/js/runtime-main.386909f9.js.map",
+    "static/js/2.7d8853e5.chunk.js": "/borosati85/project-honey/static/js/2.7d8853e5.chunk.js",
+    "static/js/2.7d8853e5.chunk.js.map": "/borosati85/project-honey/static/js/2.7d8853e5.chunk.js.map",
+    "static/js/3.e53206ae.chunk.js": "/borosati85/project-honey/static/js/3.e53206ae.chunk.js",
+    "static/js/3.e53206ae.chunk.js.map": "/borosati85/project-honey/static/js/3.e53206ae.chunk.js.map",
+    "index.html": "/borosati85/project-honey/index.html",
+    "static/css/main.7e008f5e.chunk.css.map": "/borosati85/project-honey/static/css/main.7e008f5e.chunk.css.map",
+    "static/js/2.7d8853e5.chunk.js.LICENSE.txt": "/borosati85/project-honey/static/js/2.7d8853e5.chunk.js.LICENSE.txt",
+    "static/media/beekeepers.acbdd336.jpg": "/borosati85/project-honey/static/media/beekeepers.acbdd336.jpg",
+    "static/media/bees.6beb3e0e.jpg": "/borosati85/project-honey/static/media/bees.6beb3e0e.jpg",
+    "static/media/bees2.133b25bf.jpg": "/borosati85/project-honey/static/media/bees2.133b25bf.jpg",
+    "static/media/bg2.91ff4d66.jpg": "/borosati85/project-honey/static/media/bg2.91ff4d66.jpg",
+    "static/media/bg3.750132de.jpg": "/borosati85/project-honey/static/media/bg3.750132de.jpg",
+    "static/media/blank-profile.e7f77898.png": "/borosati85/project-honey/static/media/blank-profile.e7f77898.png",
+    "static/media/hexbg.7d9fdf3f.png": "/borosati85/project-honey/static/media/hexbg.7d9fdf3f.png",
+    "static/media/honeycomb.ee92b8af.svg": "/borosati85/project-honey/static/media/honeycomb.ee92b8af.svg",
+    "static/media/profilepic1.f6ae300a.png": "/borosati85/project-honey/static/media/profilepic1.f6ae300a.png",
+    "static/media/profilepic2.c2b09c0d.png": "/borosati85/project-honey/static/media/profilepic2.c2b09c0d.png",
+    "static/media/profilepic3.3227114b.png": "/borosati85/project-honey/static/media/profilepic3.3227114b.png",
+    "static/media/profilepic4.314a2c85.png": "/borosati85/project-honey/static/media/profilepic4.314a2c85.png",
+    "static/media/profilepic5.7b5feb9e.jpg": "/borosati85/project-honey/static/media/profilepic5.7b5feb9e.jpg",
+    "static/media/profilepic6.dc791f39.jpg": "/borosati85/project-honey/static/media/profilepic6.dc791f39.jpg",
+    "static/media/shopping-bag.a688874f.svg": "/borosati85/project-honey/static/media/shopping-bag.a688874f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.386909f9.js",
+    "static/js/2.7d8853e5.chunk.js",
+    "static/css/main.7e008f5e.chunk.css",
+    "static/js/main.fc40fe3c.chunk.js"
+  ]
+}

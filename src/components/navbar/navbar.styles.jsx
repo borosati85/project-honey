@@ -32,7 +32,7 @@ const NavbarCollapsed = css`
 `
 
 const setNavbarShade = ({ scrollOffset, width, visibility, location }) => {
-  if (scrollOffset >= 200 || (width < 768 && !visibility) || location.pathname === '/login' || location.pathname === '/checkout' ) {
+  if (scrollOffset >= 200 || (width < 768 && !visibility) || location.pathname === '/project-honey/login' || location.pathname === '/project-honey/checkout' ) {
     return NavbarShadeOn;
   } else {
     return NavbarShadeOff;

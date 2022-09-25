@@ -50,11 +50,11 @@ class App extends React.Component {
         <Navbar />        
         <Routes>
           <Route path="/project-honey" element={<MainPage />}/>
-          <Route path="/shop" element={<ShopPage />}/>
-          <Route path="/checkout" element={<CheckoutPage />}/>
+          <Route path="/project-honey/shop" element={<ShopPage />}/>
+          <Route path="/project-honey/checkout" element={<CheckoutPage />}/>
           <Route 
-            exact path='/login' 
-            element = {this.props.currentUser ? <Navigate to='/'/> : <LoginPage />} 
+            exact path='/project-honey/login' 
+            element = {this.props.currentUser ? <Navigate to='/project-honey'/> : <LoginPage />} 
             />
         </Routes>
         <Footer />

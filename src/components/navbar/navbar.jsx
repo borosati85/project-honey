@@ -49,7 +49,7 @@ const Navbar = ({ currentUser, hidden }) => {
       <NavbarListContainer>
 
         {location.pathname === "/project-honey" ? (
-          <NavbarListItem gridarea="logo" as={HashLink} to="/#main">
+          <NavbarListItem gridarea="logo" as={HashLink} to="/project-honey/#main">
             <NavbarIconContainer>
               <NavbarIcon />
               BM
@@ -64,15 +64,15 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="/shop/#shop">
+        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="project-honey/shop/#shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 
-        <NavbarListItem gridarea="about" visibility={visibility ? 1 : 0} as={HashLink} to="/#about">
+        <NavbarListItem gridarea="about" visibility={visibility ? 1 : 0} as={HashLink} to="/project-honey/#about">
           <li>Rólunk</li>
         </NavbarListItem>
 
-        <NavbarListItem gridarea="contact" visibility={visibility ? 1 : 0} as={HashLink} to="/#contact">
+        <NavbarListItem gridarea="contact" visibility={visibility ? 1 : 0} as={HashLink} to="/project-honey/#contact">
           <li>Kapcsolat</li>
         </NavbarListItem>
 
@@ -81,7 +81,7 @@ const Navbar = ({ currentUser, hidden }) => {
             Kijelentkezés
           </NavbarListItem>
         ) : (
-          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} to="/login">
+          <NavbarListItem gridarea="login" visibility={visibility ? 1 : 0} to="/project-honey/login">
             <li>Bejelentkezés</li>
           </NavbarListItem>
         )}

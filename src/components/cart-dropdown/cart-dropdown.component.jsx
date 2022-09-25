@@ -21,7 +21,7 @@ const CartDropDown = ({ cartItems, dispatch}) => {
             </CartItemsContainer>
             {
                 cartItems.length ?
-                <Link to='/checkout'>
+                <Link to='/project-honey/checkout'>
                     <CustomButton onClick={() => {
                         dispatch(toggleCartHidden());
                         }}>PÉNZTÁR

@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import {
   getAuth,
-  signOut,
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword
@@ -49,14 +48,6 @@ const signInWithGoogle = () =>
       // ...
     });
   
-  const authSignOut = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
-
 const signInWithEmail = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

@@ -64,7 +64,7 @@ const Navbar = ({ currentUser, hidden }) => {
           </NavbarListItem>
         )}
 
-        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="project-honey/shop/#shop">
+        <NavbarListItem gridarea="shop" visibility={visibility ? 1 : 0} as={HashLink} to="/project-honey/shop/#shop">
           <li>Vásárlás</li>
         </NavbarListItem>
 

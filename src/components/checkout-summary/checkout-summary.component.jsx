@@ -42,7 +42,7 @@ const CheckoutSummary = ({ cartItems, paymentType, deliveryType, setPayment, set
             cartItems.length ?
             cartItems.map(cartItem => <CheckoutItem key={cartItem.id} item={cartItem}/>)
             :
-            <Navigate to='/shop/#shop'/>
+            <Navigate to='/project-honey/shop/#shop'/>
         }
         <DeliveryAndPaymentContainer>
             <DeliveryContainer>
